@@ -63,8 +63,8 @@
                                 android:layout_weight="1"
                                 android:ems="10"
                                 android:enabled="false"
-                                android:inputType="textPersonName"
-                                android:text="@string/app_name" />
+                                android:hint="@string/lbl_villagename"
+                                android:inputType="textPersonName" />
 
                         </LinearLayout>
 
@@ -107,8 +107,8 @@
                                 android:layout_weight="1"
                                 android:ems="10"
                                 android:enabled="false"
-                                android:inputType="textPersonName"
-                                android:text="Name" />
+                                android:hint="@string/lbl_Variety"
+                                android:inputType="textPersonName" />
 
                         </LinearLayout>
                     </TableRow>
@@ -151,9 +151,8 @@
                                 android:layout_weight="1"
                                 android:ems="10"
                                 android:enabled="false"
-                                android:hint="@string/app_name"
-                                android:inputType="textPersonName"
-                                android:text="Name" />
+                                android:hint="@string/lbl_Canetype"
+                                android:inputType="textPersonName" />
 
                         </LinearLayout>
                     </TableRow>
@@ -293,8 +292,8 @@
                                 android:layout_weight="1"
                                 android:ems="10"
                                 android:enabled="false"
-                                android:inputType="textPersonName"
-                                android:text="Name" />
+                                android:hint="@string/lbl_villagename"
+                                android:inputType="textPersonName" />
 
                         </LinearLayout>
                     </TableRow>
@@ -336,8 +335,8 @@
                                 android:layout_weight="1"
                                 android:ems="10"
                                 android:enabled="false"
-                                android:inputType="textPersonName"
-                                android:text="Name" />
+                                android:hint="@string/lbl_growername"
+                                android:inputType="textPersonName" />
 
                         </LinearLayout>
                     </TableRow>
@@ -347,14 +346,14 @@
                         android:layout_height="match_parent">
 
                         <TextView
-                            android:id="@+id/textView8"
+                            android:id="@+id/textView88"
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
                             android:gravity="center_vertical"
                             android:text="@string/lbl_Father" />
 
                         <TextView
-                            android:id="@+id/textView28"
+                            android:id="@+id/textView288"
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
                             android:gravity="center_vertical"
@@ -372,8 +371,8 @@
                                 android:layout_weight="1"
                                 android:ems="10"
                                 android:enabled="false"
-                                android:inputType="textPersonName"
-                                android:text="Name" />
+                                android:hint="@string/lbl_Father"
+                                android:inputType="textPersonName" />
 
                         </LinearLayout>
                     </TableRow>
@@ -405,7 +404,7 @@
                                 android:id="@+id/cMobileno"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:hint="Code"
+                                android:hint="Mobile Number"
                                 android:inputType="number" />
 
                         </LinearLayout>

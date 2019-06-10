@@ -44,8 +44,8 @@ public class CapturePlot extends Fragment implements GpsTestListener, View.OnCli
     private TextView txtlat1, txtlat2, txtlat3, txtlat4, txtlon1, txtlon2, txtlon3, txtlon4, txtmtr1, txtmtr2, txtmtr3, txtmtr4;
     private TextView txtarea, txtcurrentlatlon, txtaccu;
     private EditText mPlotVillCode, mPlotVillName, mVarietycode, mVarietyname, mCanetypeCode, mCanetypeName,
-            mPlantationDate , mGVillCode, mGVillName,mFathername, mGCode, mGName, mMobileno, mSharePercent;
-    private Spinner  mPlantation,mIrrigation ;
+            mPlantationDate, mGVillCode, mGVillName, mFathername, mGCode, mGName, mMobileno, mSharePercent;
+    private Spinner mPlantation, mIrrigation;
 
     private Resources mRes;
     private int currentcorer = 0;
@@ -53,7 +53,7 @@ public class CapturePlot extends Fragment implements GpsTestListener, View.OnCli
     private String lat, lon;
     private Location locationA, locationB;
     List<Location> allLocations = new ArrayList<>();
-    private Button btncapturelocation;
+    private Button btncapturelocation, btnAddShare, btnSaveSurvey;
     private long mFixTime;
 
     StringBuilder sbuilder = null;
@@ -64,8 +64,8 @@ public class CapturePlot extends Fragment implements GpsTestListener, View.OnCli
     String mPrefDistanceUnits;
     String mPrefSpeedUnits;
 
-    ArrayAdapter plantationadapter,irrigationadapter;
-    ArrayList<String> plantationlist,irrigationlist;
+    ArrayAdapter plantationadapter, irrigationadapter;
+    ArrayList<String> plantationlist, irrigationlist;
 
 
     @Override
@@ -108,18 +108,20 @@ public class CapturePlot extends Fragment implements GpsTestListener, View.OnCli
 
         mGVillCode.addTextChangedListener(this);
         mGCode.addTextChangedListener(this);
+        mSharePercent.addTextChangedListener(this);
         mGCode.setOnFocusChangeListener(this);
         mPlotVillCode.setOnFocusChangeListener(this);
         mVarietycode.setOnFocusChangeListener(this);
         mCanetypeCode.setOnFocusChangeListener(this);
         mGVillCode.setOnFocusChangeListener(this);
+        mSharePercent.setOnFocusChangeListener(this);
 
         plantationlist = CommanData.conn.plantationMethod.getNameList();
-        plantationadapter=new ArrayAdapter(this.getContext(),android.R.layout.simple_spinner_dropdown_item,plantationlist);
+        plantationadapter = new ArrayAdapter(this.getContext(), android.R.layout.simple_spinner_dropdown_item, plantationlist);
         mPlantation.setAdapter(plantationadapter);
 
-        irrigationlist= CommanData.conn.irrigation.getNameList();
-        irrigationadapter=new ArrayAdapter(this.getContext(),android.R.layout.simple_spinner_dropdown_item,irrigationlist);
+        irrigationlist = CommanData.conn.irrigation.getNameList();
+        irrigationadapter = new ArrayAdapter(this.getContext(), android.R.layout.simple_spinner_dropdown_item, irrigationlist);
         mIrrigation.setAdapter(irrigationadapter);
     }
 
@@ -156,11 +158,15 @@ public class CapturePlot extends Fragment implements GpsTestListener, View.OnCli
         mGName = v.findViewById(R.id.cGrowerName);
         mMobileno = v.findViewById(R.id.cMobileno);
         mSharePercent = v.findViewById(R.id.cSharePercent);
-        mFathername=v.findViewById(R.id.cFatherName);
+        mFathername = v.findViewById(R.id.cFatherName);
         mPlantation = v.findViewById(R.id.cSpinnerPlantation);
         mIrrigation = v.findViewById(R.id.cSpinnerIrrigation);
-        plantationlist=new ArrayList<>();
-        irrigationlist=new ArrayList<>();
+        btnAddShare = v.findViewById(R.id.cBtnAddshare);
+        btnAddShare.setEnabled(false);
+        mSharePercent.setText("100");
+        btnSaveSurvey = v.findViewById(R.id.cBtnNewPlot);
+        plantationlist = new ArrayList<>();
+        irrigationlist = new ArrayList<>();
     }
 
     private void setupUnitPreferences() {
@@ -453,8 +459,7 @@ public class CapturePlot extends Fragment implements GpsTestListener, View.OnCli
 
     }
 
-    void setCanetypename(int canetype)
-    {
+    void setCanetypename(int canetype) {
         switch (canetype) {
             case 1:
                 mCanetypeName.setText("Early");
@@ -476,25 +481,35 @@ public class CapturePlot extends Fragment implements GpsTestListener, View.OnCli
                 mPlotVillName.setText(CommanData.conn.village.getVillageName(Integer.valueOf(editable.toString())));
             } else if (currenttextchangecontrol == mVarietycode) {
                 mVarietyname.setText(CommanData.conn.variety.getVarietyName(Integer.valueOf(editable.toString())));
-                if(mVarietyname.getText().length()>0) {
-                    int canetyepe=CommanData.conn.variety.getCaneTypeCode(Integer.valueOf(editable.toString()));
+                if (mVarietyname.getText().length() > 0) {
+                    int canetyepe = CommanData.conn.variety.getCaneTypeCode(Integer.valueOf(editable.toString()));
 
-                    if(canetyepe>0)
-                    {
+                    if (canetyepe > 0) {
                         mCanetypeCode.setText(String.valueOf(canetyepe));
                         setCanetypename(canetyepe);
                     }
                 }
-            }  else if (currenttextchangecontrol == mGVillCode) {
+            } else if (currenttextchangecontrol == mGVillCode) {
                 mGVillName.setText(CommanData.conn.village.getVillageName(Integer.valueOf(editable.toString())));
             } else if (currenttextchangecontrol == mGCode) {
                 if (mGVillCode.getText().length() > 0) {
                     mGName.setText(CommanData.conn.grower.getGrowerName(Integer.valueOf(mGVillCode.getText().toString()), Integer.valueOf(editable.toString())));
                     mFathername.setText(CommanData.conn.grower.getFatherName(Integer.valueOf(mGVillCode.getText().toString()), Integer.valueOf(editable.toString())));
-                }
-                else
+                } else
                     mGCode.setError("First Fill Village Code");
+            } else if (currenttextchangecontrol == mSharePercent) {
+                if (Integer.valueOf(editable.toString()) == 100)
+                    btnAddShare.setEnabled(false);
+                else if (Integer.valueOf(editable.toString()) < 100) {
+                    btnAddShare.setEnabled(true);
+                } else if (Integer.valueOf(editable.toString()) > 100) {
+                    mSharePercent.setError("Share Percent Can not grater then 100");
+                    mSharePercent.setText("100");
+                    btnAddShare.setEnabled(false);
+                }
             }
+
+
         }
     }
 

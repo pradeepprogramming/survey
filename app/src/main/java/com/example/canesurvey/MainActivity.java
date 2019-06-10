@@ -18,6 +18,15 @@ import com.example.canesurvey.util.CheckPermission;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 
+import android.os.CancellationSignal;
+import android.os.ParcelFileDescriptor;
+import android.print.PageRange;
+import android.print.PrintAttributes;
+import android.print.PrintDocumentAdapter;
+import android.print.PrintDocumentInfo;
+import android.print.PrintManager;
+import android.print.pdf.PrintedPdfDocument;
+import android.printservice.PrintDocument;
 import android.provider.Settings;
 import android.telephony.TelephonyManager;
 import android.view.View;
@@ -34,6 +43,7 @@ import androidx.fragment.app.Fragment;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import java.io.FileOutputStream;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity
@@ -93,6 +103,42 @@ public class MainActivity extends AppCompatActivity
         this.setTitle(fr.Tag);
         getSupportFragmentManager().beginTransaction().add(R.id.fholder, fragment).commit();
         Init();
+
+
+       /* PrintManager printManager = (PrintManager) this
+                .getSystemService(Context.PRINT_SERVICE);
+
+        // Set job name, which will be displayed in the print queue
+        String jobName = this.getString(R.string.app_name) + " Document";
+
+        // Start a print job, passing in a PrintDocumentAdapter implementation
+        // to handle the generation of a print document
+        printManager.print
+        //printManager.print(jobName, null,null); //*/
+
+    }
+
+    public class MyPrintDocumentAdapter extends PrintDocumentAdapter{
+        Context _contect;
+        public MyPrintDocumentAdapter(Context context)
+        {
+            _contect=context;
+        }
+
+        @Override
+        public void onLayout(PrintAttributes oldAttributes,
+                             PrintAttributes newAttributes,
+                             CancellationSignal cancellationSignal,
+                             LayoutResultCallback callback,
+                             Bundle metadata) {
+            // Create a new PdfDocument with the requested page attributes
+
+        }
+
+        @Override
+        public void onWrite(PageRange[] pageRanges, ParcelFileDescriptor parcelFileDescriptor, CancellationSignal cancellationSignal, WriteResultCallback writeResultCallback) {
+
+        }
 
     }
 
@@ -211,7 +257,7 @@ public class MainActivity extends AppCompatActivity
             CheckPermission.checkLocationPermission(this);
             mStarted=true;
             mLocationManager
-                    .requestLocationUpdates(mProvider.getName(), 100, 0, this);
+                    .requestLocationUpdates(mProvider.getName(), 500, 0, this);
         }
     }
 
