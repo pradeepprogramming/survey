@@ -119,6 +119,9 @@ public class ImportData extends Fragment implements View.OnClickListener, ITaskC
 
             CommanData.CloseWaitDialog();
 
+            AlertDialog dialog=new AlertDialog.Builder(this.getContext()).setTitle("uploadJson").setMessage(surveysjson.toString()).show();
+
+
         }
 
 

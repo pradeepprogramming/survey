@@ -83,7 +83,7 @@ public class TableSurvey extends Table {
                 cm.setSharepercent(cursor.getInt(cursor.getColumnIndex(TotalSharePercent)));
                 cm.setVill(cursor.getInt(cursor.getColumnIndex(tgrower.VillageCode)));
                 cm.setGrow(cursor.getInt(cursor.getColumnIndex(tgrower.GrowerCode)));
-                cm.setPlotlocations(CommanData.conn.plotlocation.getAllPlotLocation(cursor.getInt(cursor.getColumnIndex(tgrower.GrowerCode))));
+                cm.setPlotlocations(CommanData.conn.plotlocation.getAllPlotLocation(cursor.getInt(cursor.getColumnIndex(ID))));
                 completesurveys.add(cm);
             }
             return completesurveys;
