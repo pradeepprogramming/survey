@@ -30,7 +30,7 @@
                     android:layout_alignParentLeft="true"
                     android:layout_centerInParent="true"
                     android:fontFamily="sans-serif-light"
-                    android:text="Plot Vill :"
+                    android:text="Plot Village :"
                     android:textColor="@color/blackcolour"
                     android:textSize="14dp"
                     android:textStyle="bold" />
@@ -62,30 +62,29 @@
 
             </RelativeLayout>
 
+
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
                 <TextView
-                    android:id="@+id/tvVilName"
+                    android:id="@+id/tvPlotVN"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentLeft="true"
                     android:layout_centerInParent="true"
                     android:fontFamily="sans-serif-light"
-                    android:text="Village Name :"
+                    android:text="Plot Village Name:"
                     android:textColor="@color/blackcolour"
                     android:textSize="14dp"
                     android:textStyle="bold" />
 
                 <TextView
-                    android:id="@+id/tvVillName"
+                    android:id="@+id/tvPlotVillName"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignStart="@+id/tvVilName"
-                    android:layout_centerVertical="true"
-                    android:layout_marginStart="-2dp"
-                    android:layout_toRightOf="@+id/tvVilName"
+                    android:layout_centerInParent="true"
+                    android:layout_toRightOf="@+id/tvPlotVN"
                     android:fontFamily="sans-serif-light"
                     android:paddingLeft="3dp"
                     android:text=""
@@ -126,6 +125,40 @@
 
 
             </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/tvVilName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerInParent="true"
+                    android:fontFamily="sans-serif-light"
+                    android:text="Village Name :"
+                    android:textColor="@color/blackcolour"
+                    android:textSize="14dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tvVillName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignStart="@+id/tvVilName"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="-2dp"
+                    android:layout_toRightOf="@+id/tvVilName"
+                    android:fontFamily="sans-serif-light"
+                    android:paddingLeft="3dp"
+                    android:text=""
+                    android:textColor="@color/blackcolour"
+                    android:textSize="14dp" />
+
+
+            </RelativeLayout>
+
 
             <RelativeLayout
                 android:layout_width="match_parent"

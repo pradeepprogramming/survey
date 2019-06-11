@@ -32,10 +32,13 @@ public class DaySummaryAdapter extends RecyclerView.Adapter<DaySummaryAdapter.My
 
     @Override
     public void onBindViewHolder(@NonNull MyHolder holder, int position) {
-        holder.tvGrowerName.setText(String.valueOf(arrayList.get(position).getGrow()));
+        holder.tvPlotVill.setText(String.valueOf(arrayList.get(position).getGrowername()));
+        holder.tvVillName.setText(String.valueOf(arrayList.get(position).getVillagename()));
+        holder.tvGrowerName.setText(String.valueOf(arrayList.get(position).getGrowername()));
         holder.tvVarty.setText(String.valueOf(arrayList.get(position).getVariety()));
         holder.tvGrowerVill.setText(String.valueOf(arrayList.get(position).getVill()));
         holder.tvCaneArea.setText(String.valueOf(arrayList.get(position).getArea()));
+        holder.tvFatherName.setText(String.valueOf(arrayList.get(position).getFathername()));
 
         holder.tvMobileNumber.setText(String.valueOf(arrayList.get(position).getMobile()));
 
@@ -52,7 +55,7 @@ public class DaySummaryAdapter extends RecyclerView.Adapter<DaySummaryAdapter.My
     public class MyHolder extends RecyclerView.ViewHolder {
 
         TextView tvGrowerName, tvVarty, tvCaneType, tvGrowerVill, tvGrowerCode, tvGrowerVillCode,tvPlotVill,tvVillName,tvVillCode,tvFatherName,
-                tvMobileNumber, tvCaneArea, tvType, tvDataFrom, tvCorner1, tvCorner2, tvCorner3, tvCorner4;
+                tvMobileNumber, tvCaneArea, tvType, tvDataFrom, tvCorner1, tvCorner2, tvCorner3, tvCorner4,tvPlotVillName;
 
 
 
@@ -62,6 +65,7 @@ public class DaySummaryAdapter extends RecyclerView.Adapter<DaySummaryAdapter.My
             tvGrowerName = view.findViewById(R.id.tvGrowerName);
             tvVarty = view.findViewById(R.id.tvVarty);
             tvCaneType = view.findViewById(R.id.tvCaneType);
+            tvPlotVillName = view.findViewById(R.id.tvPlotVillName);
 
             tvGrowerCode = view.findViewById(R.id.tvGrowerCode);
             tvGrowerVill = view.findViewById(R.id.tvGrowerVill);
