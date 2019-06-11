@@ -17,8 +17,8 @@ public class TableGrower extends Table {
      String ID = "ID";
      String GrowerCode = "GrowerCode";
      String VillageCode = "VillageCode";
-    private String GrowerName = "GrowerName";
-    private String FatherName = "FatherName";
+     String GrowerName = "GrowerName";
+     String FatherName = "FatherName";
     private String Unicode = "Unicode";
     private String MobileNo = "MobileNo";
     private String Aadharno = "Aadharno";
@@ -88,6 +88,38 @@ public class TableGrower extends Table {
         try {
             String query = "SELECT " + FatherName +
                     " FROM " + getTableName() + " where " + GrowerCode + "=" + growercode + " and "+VillageCode+"="+villcode+" ;";
+            Cursor cursor = db.rawQuery(query, null);
+            cursor.moveToFirst();
+            String name = "";
+            name = cursor.getString(0);
+            cursor.close();
+            return name;
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+    public String getFatherName(int id) {
+        try {
+            String query = "SELECT " + FatherName +
+                    " FROM " + getTableName() + " where " + ID + "=" + id + ";";
+            Cursor cursor = db.rawQuery(query, null);
+            cursor.moveToFirst();
+            String name = "";
+            name = cursor.getString(0);
+            cursor.close();
+            return name;
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+    public String getGrowerName(int id) {
+        try {
+            String query = "SELECT " + GrowerName +
+                    " FROM " + getTableName() + " where " + ID + "=" + id + ";";
             Cursor cursor = db.rawQuery(query, null);
             cursor.moveToFirst();
             String name = "";

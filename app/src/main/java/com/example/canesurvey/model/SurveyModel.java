@@ -4,6 +4,7 @@ import java.util.Date;
 
 public class SurveyModel {
     private int ID;
+    private int plotvillagecode;
     private int growerid;
     private double area;
     private int variety;
@@ -18,7 +19,7 @@ public class SurveyModel {
 
     }
 
-    public SurveyModel(int growerid, double area, int variety, int irrigation, int plantationmethod, String plantationdate, long mobile, long aadhar, int sharepercent) {
+    public SurveyModel(int plotvillagecode,int growerid, double area, int variety, int irrigation, int plantationmethod, String plantationdate, long mobile, long aadhar, int sharepercent) {
         this.growerid = growerid;
         this.area = area;
         this.variety = variety;
