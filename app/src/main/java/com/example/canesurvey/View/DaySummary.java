@@ -53,6 +53,7 @@ public class DaySummary extends Fragment {
         surveyModels = CommanData.conn.survey.getCompleteSurvey();
 
         Log.d(TAG, "initUI: "+surveyModels.size());
+
         if(surveyModels.size()>0) {
             tvNoRecord.setVisibility(View.GONE);
             DaySummaryAdapter mAdapter = new DaySummaryAdapter(mActivity, surveyModels);

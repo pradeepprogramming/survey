@@ -6,13 +6,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.example.canesurvey.R;
 import com.example.canesurvey.model.CompleteSurveyModel;
-
 import java.util.List;
 
 public class DaySummaryAdapter extends RecyclerView.Adapter<DaySummaryAdapter.MyHolder> {
@@ -37,9 +34,12 @@ public class DaySummaryAdapter extends RecyclerView.Adapter<DaySummaryAdapter.My
     public void onBindViewHolder(@NonNull MyHolder holder, int position) {
         holder.tvGrowerName.setText(String.valueOf(arrayList.get(position).getGrow()));
         holder.tvVarty.setText(String.valueOf(arrayList.get(position).getVariety()));
+        holder.tvGrowerVill.setText(String.valueOf(arrayList.get(position).getVill()));
+        holder.tvCaneArea.setText(String.valueOf(arrayList.get(position).getArea()));
+
         holder.tvMobileNumber.setText(String.valueOf(arrayList.get(position).getMobile()));
 
-
+//        holder.tvCorner1.setText(String.valueOf(arrayList.get(position).getPlotlocations().get(position).getMeter()));
 
         Log.d(">>>", "onBindViewHolder: ");
     }
@@ -52,7 +52,7 @@ public class DaySummaryAdapter extends RecyclerView.Adapter<DaySummaryAdapter.My
     public class MyHolder extends RecyclerView.ViewHolder {
 
         TextView tvGrowerName, tvVarty, tvCaneType, tvGrowerVill, tvGrowerCode, tvGrowerVillCode,
-                tvMobileNumber, tvCaneArea, tvPlotNum, tvType, tvDataFrom, tvCorner1, tvCorner2, tvCorner3, tvCorner4;
+                tvMobileNumber, tvCaneArea, tvType, tvDataFrom, tvCorner1, tvCorner2, tvCorner3, tvCorner4;
 
         public MyHolder(@NonNull View view) {
             super(view);
@@ -65,7 +65,7 @@ public class DaySummaryAdapter extends RecyclerView.Adapter<DaySummaryAdapter.My
             tvGrowerVillCode = view.findViewById(R.id.tvGrowerVillCode);
             tvMobileNumber = view.findViewById(R.id.tvMobileNumber);
             tvCaneArea = view.findViewById(R.id.tvCaneArea);
-            tvPlotNum = view.findViewById(R.id.tvPlotNum);
+
             tvType = view.findViewById(R.id.tvType);
             tvDataFrom = view.findViewById(R.id.tvDataFrom);
             tvCorner1 = view.findViewById(R.id.tvCorner1);

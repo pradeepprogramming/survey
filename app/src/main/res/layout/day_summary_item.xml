@@ -275,42 +275,12 @@
 
             </RelativeLayout>
 
-            <RelativeLayout
-                android:id="@+id/rLayPlotN"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/rlayCaneArea">
-
-                <TextView
-                    android:id="@+id/tvPlotN"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="sans-serif-light"
-                    android:text="Plot No.:"
-                    android:textColor="@color/blackcolour"
-                    android:textSize="14dp"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:id="@+id/tvPlotNum"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignStart="@+id/tvPlotN"
-                    android:layout_marginStart="9dp"
-                    android:layout_marginLeft="5dp"
-                    android:layout_toRightOf="@+id/tvPlotN"
-                    android:fontFamily="sans-serif-light"
-                    android:text=""
-                    android:textColor="@color/blackcolour"
-                    android:textSize="14dp" />
-
-            </RelativeLayout>
 
             <RelativeLayout
                 android:id="@+id/rLayType"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/rLayVarty">
+                android:layout_below="@+id/rlayCaneArea">
 
                 <TextView
                     android:id="@+id/tvTp"
@@ -391,7 +361,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="sans-serif-light"
-                        android:text="meter"
+                        android:text=""
                         android:textColor="@color/blackcolour"
                         android:textSize="14dp" />
                 </LinearLayout>
@@ -417,7 +387,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="sans-serif-light"
-                        android:text="meter"
+                        android:text=""
                         android:textColor="@color/blackcolour"
                         android:textSize="14dp" />
                 </LinearLayout>
@@ -443,7 +413,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="sans-serif-light"
-                        android:text="meter"
+                        android:text=""
                         android:textColor="@color/blackcolour"
                         android:textSize="14dp" />
                 </LinearLayout>
@@ -469,7 +439,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="sans-serif-light"
-                        android:text="meter"
+                        android:text=""
                         android:textColor="@color/blackcolour"
                         android:textSize="14dp" />
                 </LinearLayout>
