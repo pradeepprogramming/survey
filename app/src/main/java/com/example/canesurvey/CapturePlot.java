@@ -35,6 +35,7 @@ import com.example.canesurvey.model.SurveyModel;
 import com.example.canesurvey.util.GpsTestUtil;
 import com.example.canesurvey.util.UIUtils;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
@@ -365,9 +366,11 @@ public class CapturePlot extends Fragment implements GpsTestListener, View.OnCli
     private void SaveSurvey() {
 
         if (FormValid()) {
-            float area = Float.valueOf(String.valueOf(calculateAreaOfGPSPolygonOnSphereInSquareMeters(allLocations, EARTH_RADIUS))) / 10000;
+            DecimalFormat df=new DecimalFormat("#.###");
+            double area =Double.valueOf(df.format(calculateAreaOfGPSPolygonOnSphereInSquareMeters(allLocations, EARTH_RADIUS)/ 10000));
             SurveyModel survey = new SurveyModel(
-                    CommanData.conn.grower.getGrowerid(Integer.valueOf(mGVillCode.getText().toString()), Integer.valueOf(mGCode.getText().toString()))
+                    Integer.valueOf(mPlotVillCode.getText().toString())
+                    ,CommanData.conn.grower.getGrowerid(Integer.valueOf(mGVillCode.getText().toString()), Integer.valueOf(mGCode.getText().toString()))
                     , area
                     , Integer.valueOf(mVarietycode.getText().toString())
                     , CommanData.conn.irrigation.getID(mIrrigation.getSelectedItem().toString())

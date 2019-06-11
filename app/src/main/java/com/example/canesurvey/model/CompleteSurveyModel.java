@@ -11,6 +11,34 @@ public class CompleteSurveyModel extends SurveyModel {
     private List<PlotLcationModel> plotlocations;
     private int grow;
     private int vill;
+    private String growername;
+    private String villagename;
+    private String fathername;
+
+
+    public String getGrowername() {
+        return growername;
+    }
+
+    public void setGrowername(String growername) {
+        this.growername = growername;
+    }
+
+    public String getVillagename() {
+        return villagename;
+    }
+
+    public void setVillagename(String villagename) {
+        this.villagename = villagename;
+    }
+
+    public String getFathername() {
+        return fathername;
+    }
+
+    public void setFathername(String fathername) {
+        this.fathername = fathername;
+    }
 
     public List<PlotLcationModel> getPlotlocations() {
         return plotlocations;
@@ -42,13 +70,13 @@ public class CompleteSurveyModel extends SurveyModel {
         jobj.put("vill",vill);
         jobj.put("grow",grow);
         jobj.put("area",getArea());
-        jobj.put("variety",getArea());
-        jobj.put("irrigation",getArea());
-        jobj.put("plantation",getArea());
-        jobj.put("plantationdate",getArea());
-        jobj.put("mobile",getArea());
-        jobj.put("aadhar",getArea());
-        jobj.put("sharepercent",getArea());
+        jobj.put("variety",getVariety());
+        jobj.put("irrigation",getIrrigation());
+        jobj.put("plantation",getPlantationmethod());
+        jobj.put("plantationdate",getPlantationdate());
+        jobj.put("mobile",getMobile());
+        jobj.put("aadhar",getAadhar());
+        jobj.put("sharepercent",getSharepercent());
         JSONArray ar=new JSONArray();
         for (PlotLcationModel plot:plotlocations
              ) {

@@ -20,6 +20,7 @@ public class TableSurvey extends Table {
     }
 
     private String ID = "ID";
+    private String PlotVillagecode="Plotvillagecode";
     private String Growerid = "GrowerId";
     private String Area = "Area";
     private String Variety = "Variety";
@@ -32,6 +33,7 @@ public class TableSurvey extends Table {
 
     public String CreateTable() {
         String query = new StringBuilder("create table " + getTableName() + "  (" + ID + " INTEGER not null  PRIMARY KEY AUTOINCREMENT ")
+                .append("," + PlotVillagecode + " INTEGER not null")
                 .append("," + Growerid + " INTEGER not null")
                 .append("," + Area + " NUMERIC NOT NULL")
                 .append("," + Variety + " INTEGER NOT NULL")
@@ -67,7 +69,7 @@ public class TableSurvey extends Table {
         try {
             List<CompleteSurveyModel> completesurveys=new ArrayList<>();
             TableGrower tgrower = CommanData.conn.grower;
-            String query = "select * from " + getTableName() + " s join " + tgrower.getTableName() +
+            String query = "select s.*,villagecode,growercode from " + getTableName() + " s join " + tgrower.getTableName() +
                     " g on " + Growerid + "= g." + tgrower.ID + ";";
             Cursor cursor = db.rawQuery(query, null);
             for (cursor.moveToFirst(); !cursor.isAfterLast(); cursor.moveToNext()) {
@@ -81,9 +83,15 @@ public class TableSurvey extends Table {
                 cm.setMobile(cursor.getLong(cursor.getColumnIndex(MobileNo)));
                 cm.setAadhar(cursor.getLong(cursor.getColumnIndex(AadharNo)));
                 cm.setSharepercent(cursor.getInt(cursor.getColumnIndex(TotalSharePercent)));
-                cm.setVill(cursor.getInt(cursor.getColumnIndex(tgrower.VillageCode)));
+                int id=cursor.getInt(cursor.getColumnIndex(ID));
+                int villcode=cursor.getInt(cursor.getColumnIndex(tgrower.VillageCode));
+                cm.setVill(villcode);
                 cm.setGrow(cursor.getInt(cursor.getColumnIndex(tgrower.GrowerCode)));
-                cm.setPlotlocations(CommanData.conn.plotlocation.getAllPlotLocation(cursor.getInt(cursor.getColumnIndex(ID))));
+
+                cm.setGrowername(CommanData.conn.grower.getGrowerName(id));
+                cm.setFathername(CommanData.conn.grower.getFatherName(id));
+                cm.setVillagename(CommanData.conn.village.getVillageName(villcode));
+                cm.setPlotlocations(CommanData.conn.plotlocation.getAllPlotLocation(id));
                 completesurveys.add(cm);
             }
             return completesurveys;
