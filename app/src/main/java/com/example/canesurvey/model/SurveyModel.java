@@ -14,6 +14,10 @@ public class SurveyModel {
     private long aadhar;
     private int sharepercent;
 
+    public SurveyModel() {
+
+    }
+
     public SurveyModel(int growerid, float area, int variety, int irrigation, int plantationmethod, String plantationdate, long mobile, long aadhar, int sharepercent) {
         this.growerid = growerid;
         this.area = area;
