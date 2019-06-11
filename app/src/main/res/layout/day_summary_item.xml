@@ -1,0 +1,483 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="8dp">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        card_view:cardCornerRadius="5dp"
+        card_view:contentPadding="8dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:id="@+id/rLayoutGrowName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/tvGrwName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerInParent="true"
+                    android:fontFamily="sans-serif-light"
+                    android:text="Grower Name :"
+                    android:textColor="@color/blackcolour"
+                    android:textSize="14dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tvGrowerName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:layout_toRightOf="@+id/tvGrwName"
+                    android:fontFamily="sans-serif-light"
+                    android:paddingLeft="3dp"
+                    android:text=""
+                    android:textColor="@color/blackcolour"
+                    android:textSize="14dp" />
+
+                <Button
+                    android:id="@+id/cImportall"
+                    android:layout_width="80dp"
+                    android:layout_height="30dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerInParent="true"
+                    android:background="@drawable/button3"
+                    android:fontFamily="sans-serif-light"
+                    android:padding="3dp"
+                    android:text="Button"
+                    android:textColor="@color/WhiteSmoke"
+                    android:textSize="12dp" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/rLayoutGrowName">
+
+                <TextView
+                    android:id="@+id/tvVarity"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerInParent="true"
+                    android:fontFamily="sans-serif-light"
+                    android:text="Variety :"
+                    android:textColor="@color/blackcolour"
+                    android:textSize="14dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tvVarty"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:layout_toRightOf="@+id/tvVarity"
+                    android:fontFamily="sans-serif-light"
+                    android:paddingLeft="3dp"
+                    android:text=""
+                    android:textColor="@color/blackcolour"
+                    android:textSize="14dp" />
+
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/tvCaneT"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerInParent="true"
+                    android:fontFamily="sans-serif-light"
+                    android:text="Cane Type :"
+                    android:textColor="@color/blackcolour"
+                    android:textSize="14dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tvCaneType"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:layout_toRightOf="@+id/tvCaneT"
+                    android:fontFamily="sans-serif-light"
+                    android:paddingLeft="3dp"
+                    android:text=""
+                    android:textColor="@color/blackcolour"
+                    android:textSize="14dp" />
+
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/rlayoutGVill"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/rlayoutGCode">
+
+                <TextView
+                    android:id="@+id/tvGVill"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-light"
+                    android:text="Grower Vill:"
+                    android:textColor="@color/blackcolour"
+                    android:textSize="14dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tvGrowerVill"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_toRightOf="@+id/tvGVill"
+                    android:fontFamily="sans-serif-light"
+                    android:text=""
+                    android:textAllCaps="false"
+                    android:textColor="@color/blackcolour"
+                    android:textSize="14dp" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/rlayoutGCode"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/rlayoutName">
+
+                <TextView
+                    android:id="@+id/tvGCode"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-light"
+                    android:text="Grower Code :"
+                    android:textColor="@color/blackcolour"
+                    android:textSize="14dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tvGrowerCode"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_toRightOf="@+id/tvGCode"
+                    android:fontFamily="sans-serif-light"
+                    android:text=""
+                    android:textAllCaps="false"
+                    android:textColor="@color/blackcolour"
+                    android:textSize="14dp" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/rlayoutGVillCode"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/rlayoutGVill">
+
+                <TextView
+                    android:id="@+id/tvGVillCode"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-light"
+                    android:text="Father Name :"
+                    android:textColor="@color/blackcolour"
+                    android:textSize="14dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tvGrowerVillCode"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_toRightOf="@+id/tvGVillCode"
+                    android:fontFamily="sans-serif-light"
+                    android:text=""
+                    android:textAllCaps="false"
+                    android:textColor="@color/blackcolour"
+                    android:textSize="14dp" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/rlayoutMobile"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/rlayoutPVillCode">
+
+                <TextView
+                    android:id="@+id/tvMob"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-light"
+                    android:text="Mobile No. :"
+                    android:textColor="@color/blackcolour"
+                    android:textSize="14dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tvMobileNumber"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_toRightOf="@+id/tvMob"
+                    android:fontFamily="sans-serif-light"
+                    android:text=""
+                    android:textAllCaps="false"
+                    android:textColor="@color/blackcolour"
+                    android:textSize="14dp" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/rlayCaneArea"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/rlayLng">
+
+                <TextView
+                    android:id="@+id/tvCaneA"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-light"
+                    android:text="Cane Area :"
+                    android:textColor="@color/blackcolour"
+                    android:textSize="14dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tvCaneArea"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_toRightOf="@+id/tvCaneA"
+                    android:fontFamily="sans-serif-light"
+                    android:text=""
+                    android:textColor="@color/blackcolour"
+                    android:textSize="14dp" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/rLayPlotN"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/rlayCaneArea">
+
+                <TextView
+                    android:id="@+id/tvPlotN"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-light"
+                    android:text="Plot No.:"
+                    android:textColor="@color/blackcolour"
+                    android:textSize="14dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tvPlotNum"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignStart="@+id/tvPlotN"
+                    android:layout_marginStart="9dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_toRightOf="@+id/tvPlotN"
+                    android:fontFamily="sans-serif-light"
+                    android:text=""
+                    android:textColor="@color/blackcolour"
+                    android:textSize="14dp" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/rLayType"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/rLayVarty">
+
+                <TextView
+                    android:id="@+id/tvTp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-light"
+                    android:text="Type:"
+                    android:textColor="@color/blackcolour"
+                    android:textSize="14dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tvType"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_toRightOf="@+id/tvTp"
+                    android:fontFamily="sans-serif-light"
+                    android:text=""
+                    android:textColor="@color/blackcolour"
+                    android:textSize="14dp" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/rLayType">
+
+                <TextView
+                    android:id="@+id/tvDataFrm"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-light"
+                    android:text="Date From:"
+                    android:textColor="@color/blackcolour"
+                    android:textSize="14dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tvDataFrom"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_toRightOf="@+id/tvDataFrm"
+                    android:fontFamily="sans-serif-light"
+                    android:text=""
+                    android:textColor="@color/blackcolour"
+                    android:textSize="14dp" />
+
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="8dp"
+                android:weightSum="4">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tvConer"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="sans-serif-light"
+                        android:text="Corner 1"
+                        android:textColor="@color/blackcolour"
+                        android:textSize="14dp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tvCorner1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="sans-serif-light"
+                        android:text="meter"
+                        android:textColor="@color/blackcolour"
+                        android:textSize="14dp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tvConer2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="sans-serif-light"
+                        android:text="Corner 2"
+                        android:textColor="@color/blackcolour"
+                        android:textSize="14dp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tvCorner2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="sans-serif-light"
+                        android:text="meter"
+                        android:textColor="@color/blackcolour"
+                        android:textSize="14dp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tvConer3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="sans-serif-light"
+                        android:text="Corner 3"
+                        android:textColor="@color/blackcolour"
+                        android:textSize="14dp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tvCorner3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="sans-serif-light"
+                        android:text="meter"
+                        android:textColor="@color/blackcolour"
+                        android:textSize="14dp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tvConer4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="sans-serif-light"
+                        android:text="Corner 4"
+                        android:textColor="@color/blackcolour"
+                        android:textSize="14dp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tvCorner4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="sans-serif-light"
+                        android:text="meter"
+                        android:textColor="@color/blackcolour"
+                        android:textSize="14dp" />
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+</LinearLayout>
