@@ -74,6 +74,9 @@ public class TableSurvey extends Table {
             Cursor cursor = db.rawQuery(query, null);
             for (cursor.moveToFirst(); !cursor.isAfterLast(); cursor.moveToNext()) {
                 CompleteSurveyModel cm = new CompleteSurveyModel();
+                int plotvillcode=cursor.getInt(cursor.getColumnIndex(PlotVillagecode));
+                cm.setPlotvillagecode(plotvillcode);
+                cm.setPlotvillname(CommanData.conn.village.getVillageName(plotvillcode));
                 cm.setGrowerid(cursor.getInt(cursor.getColumnIndex(Growerid)));
                 cm.setArea(cursor.getFloat(cursor.getColumnIndex(Area)));
                 cm.setVariety(cursor.getInt(cursor.getColumnIndex(Variety)));

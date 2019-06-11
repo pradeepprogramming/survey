@@ -15,6 +15,7 @@ public class SurveyModel {
     private long aadhar;
     private int sharepercent;
 
+
     public SurveyModel() {
 
     }
@@ -29,6 +30,14 @@ public class SurveyModel {
         this.mobile = mobile;
         this.aadhar = aadhar;
         this.sharepercent = sharepercent;
+    }
+
+    public int getPlotvillagecode() {
+        return plotvillagecode;
+    }
+
+    public void setPlotvillagecode(int plotvillagecode) {
+        this.plotvillagecode = plotvillagecode;
     }
 
     public int getID() {

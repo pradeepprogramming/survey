@@ -11,10 +11,19 @@ public class CompleteSurveyModel extends SurveyModel {
     private List<PlotLcationModel> plotlocations;
     private int grow;
     private int vill;
+    private String plotvillname;
     private String growername;
     private String villagename;
     private String fathername;
 
+
+    public String getPlotvillname() {
+        return plotvillname;
+    }
+
+    public void setPlotvillname(String plotvillname) {
+        this.plotvillname = plotvillname;
+    }
 
     public String getGrowername() {
         return growername;
