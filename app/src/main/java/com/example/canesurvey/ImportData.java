@@ -21,6 +21,12 @@ import com.example.canesurvey.Async.GetAllVillageTask;
 import com.example.canesurvey.Async.GetAllvarietyTask;
 import com.example.canesurvey.Comman.CommanData;
 import com.example.canesurvey.Repository.ITaskComplete;
+import com.example.canesurvey.model.CompleteSurveyModel;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+
+import java.util.List;
 
 public class ImportData extends Fragment implements View.OnClickListener, ITaskComplete {
 
@@ -100,7 +106,19 @@ public class ImportData extends Fragment implements View.OnClickListener, ITaskC
             GetAllGrowerTask task=new GetAllGrowerTask(this);
             task.execute();
         }  else if(view==mExportSurvey){
-            CommanData.conn.survey.getCompleteSurvey();
+            List<CompleteSurveyModel> surveys= CommanData.conn.survey.getCompleteSurvey();
+            JSONArray surveysjson=new JSONArray();
+            for (CompleteSurveyModel survey :
+                    surveys) {
+                try {
+                    surveysjson.put(survey.getJsonobj());
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+
+            CommanData.CloseWaitDialog();
+
         }
 
 

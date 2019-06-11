@@ -67,12 +67,12 @@ public class TableSurvey extends Table {
         try {
             List<CompleteSurveyModel> completesurveys=new ArrayList<>();
             TableGrower tgrower = CommanData.conn.grower;
-            String query = "select * from " + getTableName() + " s join " + tgrower.getTableName() + " g on " + Growerid + "= g." + tgrower.ID + "";
+            String query = "select * from " + getTableName() + " s join " + tgrower.getTableName() + " g on " + Growerid + "= g." + tgrower.ID + ";";
             Cursor cursor = db.rawQuery(query, null);
             for (cursor.moveToFirst(); !cursor.isAfterLast(); cursor.moveToNext()) {
                 CompleteSurveyModel cm = new CompleteSurveyModel();
                 cm.setGrowerid(cursor.getInt(cursor.getColumnIndex(Growerid)));
-                cm.setArea(cursor.getInt(cursor.getColumnIndex(Area)));
+                cm.setArea(cursor.getFloat(cursor.getColumnIndex(Area)));
                 cm.setVariety(cursor.getInt(cursor.getColumnIndex(Variety)));
                 cm.setIrrigation(cursor.getInt(cursor.getColumnIndex(Irigation)));
                 cm.setPlantationmethod(cursor.getInt(cursor.getColumnIndex(PlantationMethod)));

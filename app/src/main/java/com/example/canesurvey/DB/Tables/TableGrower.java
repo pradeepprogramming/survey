@@ -68,6 +68,22 @@ public class TableGrower extends Table {
         }
         return null;
     }
+    public String getGrowerCode(int id) {
+        try {
+            String query = "SELECT " + GrowerName +
+                    " FROM " + getTableName() + " where " + ID + "=" + id + "  ;";
+            Cursor cursor = db.rawQuery(query, null);
+            cursor.moveToFirst();
+            String name = "";
+            name = cursor.getString(0);
+            cursor.close();
+            return name;
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
     public String getFatherName(int villcode,int growercode) {
         try {
             String query = "SELECT " + FatherName +
