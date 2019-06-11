@@ -76,6 +76,7 @@ public class CompleteSurveyModel extends SurveyModel {
     public JSONObject getJsonobj() throws JSONException {
         JSONObject jobj=new JSONObject();
         jobj.put("growerid",getGrowerid());
+        jobj.put("plotvill",getPlotvillagecode());
         jobj.put("vill",vill);
         jobj.put("grow",grow);
         jobj.put("area",getArea());
