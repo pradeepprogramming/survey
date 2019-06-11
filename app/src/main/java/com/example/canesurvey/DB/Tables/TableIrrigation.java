@@ -31,7 +31,7 @@ public class TableIrrigation extends Table {
     }
 
 
-    public boolean Add(IrrigatiaonModel rt) {
+    public long Add(IrrigatiaonModel rt) {
 
         ContentValues cv = new ContentValues();
         cv.put(Code, rt.getCode());

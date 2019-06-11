@@ -30,7 +30,7 @@ public class TablePlantationMethod extends Table {
     }
 
 
-    public boolean Add(PlantationModel rt) {
+    public long Add(PlantationModel rt) {
 
         ContentValues cv = new ContentValues();
         cv.put(Code, rt.getCode());

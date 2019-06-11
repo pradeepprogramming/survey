@@ -29,7 +29,7 @@ public class TableVillage extends Table {
     }
 
 
-    public boolean Add(VillageModel rt) {
+    public long Add(VillageModel rt) {
 
         ContentValues cv = new ContentValues();
         cv.put(VillageCode, rt.getCode());

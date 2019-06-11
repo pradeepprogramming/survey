@@ -375,8 +375,10 @@ public class CapturePlot extends Fragment implements GpsTestListener, View.OnCli
                     ,0
                     ,Integer.valueOf(mSharePercent.getText().toString())
             );
-
             CommanData.conn.survey.Add(survey);
+
+            // now insert plot lat ,lang in plotlocation table
+
 
             Toast.makeText(this.getContext(),"Survey Saved",Toast.LENGTH_LONG).show();
         }

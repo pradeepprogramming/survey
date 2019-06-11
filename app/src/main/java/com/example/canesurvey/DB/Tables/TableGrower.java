@@ -37,7 +37,7 @@ public class TableGrower extends Table {
     }
 
 
-    public boolean Add(GrowerModel rt) {
+    public long Add(GrowerModel rt) {
 
         ContentValues cv = new ContentValues();
         cv.put(VillageCode, rt.getVCode());

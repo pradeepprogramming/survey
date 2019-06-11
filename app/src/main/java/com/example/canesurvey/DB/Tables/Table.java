@@ -51,15 +51,15 @@ public class Table {
         }
 
     }
-    protected boolean Add(ContentValues cv)
+    protected long Add(ContentValues cv)
     {
         try {
-            db.insert(getTableName(), null, cv);
-            return true;
+           return db.insert(getTableName(), null, cv);
+
         } catch (Exception e)
         {
             e.printStackTrace();
-            return false;
+            return 0;
         }
     }
 

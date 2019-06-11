@@ -35,7 +35,7 @@ public class TableVariety extends Table {
         return query;
     }
 
-    public boolean Add(VarietyModel rt) {
+    public long Add(VarietyModel rt) {
 
         ContentValues cv = new ContentValues();
         cv.put(Code, rt.getCode());

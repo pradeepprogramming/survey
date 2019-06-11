@@ -1,6 +1,9 @@
 package com.example.canesurvey.DB.Tables;
 
+import android.content.ContentValues;
 import android.database.sqlite.SQLiteDatabase;
+
+import com.example.canesurvey.model.PlotLcationModel;
 
 public class TablePlotLocation extends Table {
     public TablePlotLocation(SQLiteDatabase db)
@@ -28,5 +31,16 @@ public class TablePlotLocation extends Table {
 
                 .append(");").toString();
         return query;
+    }
+
+    public long Add(PlotLcationModel rt){
+        ContentValues cv = new ContentValues();
+        cv.put(SurveyID, rt.getSurveyid());
+        cv.put(Corner, rt.getCorner());
+        cv.put(Lat, rt.getLat());
+        cv.put(Lang, rt.getLang());
+        cv.put(Meter, rt.getMeter());
+
+        return Add(cv);
     }
 }

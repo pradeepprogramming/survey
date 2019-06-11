@@ -42,7 +42,7 @@ public class TableSurvey extends Table {
         return query;
     }
 
-    public boolean Add(SurveyModel rt) {
+    public long Add(SurveyModel rt) {
 
         ContentValues cv = new ContentValues();
         cv.put(Growerid, rt.getGrowerid());
