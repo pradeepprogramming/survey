@@ -50,9 +50,13 @@ public class DaySummary extends Fragment {
     private void initUI(View view) {
         tvNoRecord =view.findViewById(R.id.tvNoRecord);
         recyclerView = view.findViewById(R.id.recyclerView);
-        surveyModels = CommanData.conn.survey.getCompleteSurvey();
 
-        Log.d(TAG, "initUI: "+surveyModels.size());
+        try {
+            surveyModels = CommanData.conn.survey.getCompleteSurvey();
+            Log.d(TAG, "initUI: "+surveyModels.size());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
         if(surveyModels.size()>0) {
             tvNoRecord.setVisibility(View.GONE);
@@ -65,5 +69,4 @@ public class DaySummary extends Fragment {
             tvNoRecord.setVisibility(View.VISIBLE);
         }
     }
-
 }

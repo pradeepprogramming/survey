@@ -27,12 +27,12 @@ public class DaySummaryAdapter extends RecyclerView.Adapter<DaySummaryAdapter.My
     public MyHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.day_summary_item, parent, false);
         return new DaySummaryAdapter.MyHolder(itemView);
-
     }
 
     @Override
     public void onBindViewHolder(@NonNull MyHolder holder, int position) {
-        holder.tvPlotVill.setText(String.valueOf(arrayList.get(position).getGrowername()));
+        holder.tvPlotVill.setText(String.valueOf(arrayList.get(position).getPlotvillagecode()));
+        holder.tvPlotVillName.setText(String.valueOf(arrayList.get(position).getPlotvillname()));
         holder.tvVillName.setText(String.valueOf(arrayList.get(position).getVillagename()));
         holder.tvGrowerName.setText(String.valueOf(arrayList.get(position).getGrowername()));
         holder.tvVarty.setText(String.valueOf(arrayList.get(position).getVariety()));
@@ -56,9 +56,6 @@ public class DaySummaryAdapter extends RecyclerView.Adapter<DaySummaryAdapter.My
 
         TextView tvGrowerName, tvVarty, tvCaneType, tvGrowerVill, tvGrowerCode, tvGrowerVillCode,tvPlotVill,tvVillName,tvVillCode,tvFatherName,
                 tvMobileNumber, tvCaneArea, tvType, tvDataFrom, tvCorner1, tvCorner2, tvCorner3, tvCorner4,tvPlotVillName;
-
-
-
 
         public MyHolder(@NonNull View view) {
             super(view);

@@ -19,6 +19,8 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
+
+
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
@@ -30,7 +32,7 @@
                     android:layout_alignParentLeft="true"
                     android:layout_centerInParent="true"
                     android:fontFamily="sans-serif-light"
-                    android:text="Plot Village :"
+                    android:text="Plot Village Code :"
                     android:textColor="@color/blackcolour"
                     android:textSize="14dp"
                     android:textStyle="bold" />
@@ -39,7 +41,9 @@
                     android:id="@+id/tvPlotVill"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_centerInParent="true"
+                    android:layout_alignParentBottom="true"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginBottom="6dp"
                     android:layout_toRightOf="@+id/tvPlotV"
                     android:fontFamily="sans-serif-light"
                     android:paddingLeft="3dp"
