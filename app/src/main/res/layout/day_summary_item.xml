@@ -20,7 +20,175 @@
             android:orientation="vertical">
 
             <RelativeLayout
-                android:id="@+id/rLayoutGrowName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/tvPlotV"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerInParent="true"
+                    android:fontFamily="sans-serif-light"
+                    android:text="Plot Village :"
+                    android:textColor="@color/blackcolour"
+                    android:textSize="14dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tvPlotVill"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:layout_toRightOf="@+id/tvPlotV"
+                    android:fontFamily="sans-serif-light"
+                    android:paddingLeft="3dp"
+                    android:text=""
+                    android:textColor="@color/blackcolour"
+                    android:textSize="14dp" />
+
+                <Button
+                    android:id="@+id/cImportall"
+                    android:layout_width="80dp"
+                    android:layout_height="30dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerInParent="true"
+                    android:background="@drawable/button3"
+                    android:fontFamily="sans-serif-light"
+                    android:padding="3dp"
+                    android:text="Button"
+                    android:textColor="@color/WhiteSmoke"
+                    android:textSize="12dp" />
+
+            </RelativeLayout>
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/tvPlotVN"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerInParent="true"
+                    android:fontFamily="sans-serif-light"
+                    android:text="Plot Village Name:"
+                    android:textColor="@color/blackcolour"
+                    android:textSize="14dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tvPlotVillName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:layout_toRightOf="@+id/tvPlotVN"
+                    android:fontFamily="sans-serif-light"
+                    android:paddingLeft="3dp"
+                    android:text=""
+                    android:textColor="@color/blackcolour"
+                    android:textSize="14dp" />
+
+
+            </RelativeLayout>
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/tvVilCode"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerInParent="true"
+                    android:fontFamily="sans-serif-light"
+                    android:text="Village Code :"
+                    android:textColor="@color/blackcolour"
+                    android:textSize="14dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tvVillCode"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:layout_toRightOf="@+id/tvVilCode"
+                    android:fontFamily="sans-serif-light"
+                    android:paddingLeft="3dp"
+                    android:text=""
+                    android:textColor="@color/blackcolour"
+                    android:textSize="14dp" />
+
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/tvVilName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerInParent="true"
+                    android:fontFamily="sans-serif-light"
+                    android:text="Village Name :"
+                    android:textColor="@color/blackcolour"
+                    android:textSize="14dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tvVillName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignStart="@+id/tvVilName"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="-2dp"
+                    android:layout_toRightOf="@+id/tvVilName"
+                    android:fontFamily="sans-serif-light"
+                    android:paddingLeft="3dp"
+                    android:text=""
+                    android:textColor="@color/blackcolour"
+                    android:textSize="14dp" />
+
+
+            </RelativeLayout>
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/tvGCode"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-light"
+                    android:text="Grower Code :"
+                    android:textColor="@color/blackcolour"
+                    android:textSize="14dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tvGrowerCode"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_toRightOf="@+id/tvGCode"
+                    android:fontFamily="sans-serif-light"
+                    android:text=""
+                    android:textAllCaps="false"
+                    android:textColor="@color/blackcolour"
+                    android:textSize="14dp" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
@@ -48,25 +216,71 @@
                     android:textColor="@color/blackcolour"
                     android:textSize="14dp" />
 
-                <Button
-                    android:id="@+id/cImportall"
-                    android:layout_width="80dp"
-                    android:layout_height="30dp"
-                    android:layout_alignParentRight="true"
-                    android:layout_centerInParent="true"
-                    android:background="@drawable/button3"
-                    android:fontFamily="sans-serif-light"
-                    android:padding="3dp"
-                    android:text="Button"
-                    android:textColor="@color/WhiteSmoke"
-                    android:textSize="12dp" />
 
             </RelativeLayout>
 
             <RelativeLayout
+                android:id="@+id/rlayoutGVill"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/rLayoutGrowName">
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/tvGVill"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-light"
+                    android:text="Grower Vill:"
+                    android:textColor="@color/blackcolour"
+                    android:textSize="14dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tvGrowerVill"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_toRightOf="@+id/tvGVill"
+                    android:fontFamily="sans-serif-light"
+                    android:text=""
+                    android:textAllCaps="false"
+                    android:textColor="@color/blackcolour"
+                    android:textSize="14dp" />
+
+            </RelativeLayout>
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/tvGVillCode"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-light"
+                    android:text="Grower Vill Code:"
+                    android:textColor="@color/blackcolour"
+                    android:textSize="14dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tvGrowerVillCode"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_toRightOf="@+id/tvGVillCode"
+                    android:fontFamily="sans-serif-light"
+                    android:text=""
+                    android:textAllCaps="false"
+                    android:textColor="@color/blackcolour"
+                    android:textSize="14dp" />
+
+            </RelativeLayout>
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
                 <TextView
                     android:id="@+id/tvVarity"
@@ -94,6 +308,7 @@
 
 
             </RelativeLayout>
+
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -126,65 +341,6 @@
 
             </RelativeLayout>
 
-            <RelativeLayout
-                android:id="@+id/rlayoutGVill"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/rlayoutGCode">
-
-                <TextView
-                    android:id="@+id/tvGVill"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="sans-serif-light"
-                    android:text="Grower Vill:"
-                    android:textColor="@color/blackcolour"
-                    android:textSize="14dp"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:id="@+id/tvGrowerVill"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="5dp"
-                    android:layout_toRightOf="@+id/tvGVill"
-                    android:fontFamily="sans-serif-light"
-                    android:text=""
-                    android:textAllCaps="false"
-                    android:textColor="@color/blackcolour"
-                    android:textSize="14dp" />
-
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:id="@+id/rlayoutGCode"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/rlayoutName">
-
-                <TextView
-                    android:id="@+id/tvGCode"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="sans-serif-light"
-                    android:text="Grower Code :"
-                    android:textColor="@color/blackcolour"
-                    android:textSize="14dp"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:id="@+id/tvGrowerCode"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="5dp"
-                    android:layout_toRightOf="@+id/tvGCode"
-                    android:fontFamily="sans-serif-light"
-                    android:text=""
-                    android:textAllCaps="false"
-                    android:textColor="@color/blackcolour"
-                    android:textSize="14dp" />
-
-            </RelativeLayout>
 
             <RelativeLayout
                 android:id="@+id/rlayoutGVillCode"
@@ -193,7 +349,7 @@
                 android:layout_below="@+id/rlayoutGVill">
 
                 <TextView
-                    android:id="@+id/tvGVillCode"
+                    android:id="@+id/tvFather"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="sans-serif-light"
@@ -203,11 +359,11 @@
                     android:textStyle="bold" />
 
                 <TextView
-                    android:id="@+id/tvGrowerVillCode"
+                    android:id="@+id/tvFatherName"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="5dp"
-                    android:layout_toRightOf="@+id/tvGVillCode"
+                    android:layout_toRightOf="@+id/tvFather"
                     android:fontFamily="sans-serif-light"
                     android:text=""
                     android:textAllCaps="false"
@@ -336,8 +492,8 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
                 android:layout_marginTop="8dp"
+                android:orientation="horizontal"
                 android:weightSum="4">
 
                 <LinearLayout
