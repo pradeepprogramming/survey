@@ -73,12 +73,14 @@ public class TableSurvey extends Table {
             String query = "select s.*,villagecode,growercode from " + getTableName() + " s join " + tgrower.getTableName() +
                     " g on " + Growerid + "= g." + tgrower.ID + ";";
             Cursor cursor = db.rawQuery(query, null);
+            int plotvillcode,growerid,id,villcode;
             for (cursor.moveToFirst(); !cursor.isAfterLast(); cursor.moveToNext()) {
                 CompleteSurveyModel cm = new CompleteSurveyModel();
-                int plotvillcode=cursor.getInt(cursor.getColumnIndex(PlotVillagecode));
+                 plotvillcode=cursor.getInt(cursor.getColumnIndex(PlotVillagecode));
                 cm.setPlotvillagecode(plotvillcode);
                 cm.setPlotvillname(CommanData.conn.village.getVillageName(plotvillcode));
-                cm.setGrowerid(cursor.getInt(cursor.getColumnIndex(Growerid)));
+                 growerid=cursor.getInt(cursor.getColumnIndex(Growerid));
+                cm.setGrowerid(growerid);
                 cm.setArea(cursor.getFloat(cursor.getColumnIndex(Area)));
                 cm.setVariety(cursor.getInt(cursor.getColumnIndex(Variety)));
                 cm.setIrrigation(cursor.getInt(cursor.getColumnIndex(Irigation)));
@@ -87,13 +89,13 @@ public class TableSurvey extends Table {
                 cm.setMobile(cursor.getLong(cursor.getColumnIndex(MobileNo)));
                 cm.setAadhar(cursor.getLong(cursor.getColumnIndex(AadharNo)));
                 cm.setSharepercent(cursor.getInt(cursor.getColumnIndex(TotalSharePercent)));
-                int id=cursor.getInt(cursor.getColumnIndex(ID));
-                int villcode=cursor.getInt(cursor.getColumnIndex(tgrower.VillageCode));
+                 id=cursor.getInt(cursor.getColumnIndex(ID));
+                 villcode=cursor.getInt(cursor.getColumnIndex(tgrower.VillageCode));
                 cm.setVill(villcode);
                 cm.setGrow(cursor.getInt(cursor.getColumnIndex(tgrower.GrowerCode)));
 
-                cm.setGrowername(CommanData.conn.grower.getGrowerName(id));
-                cm.setFathername(CommanData.conn.grower.getFatherName(id));
+                cm.setGrowername(CommanData.conn.grower.getGrowerName(growerid));
+                cm.setFathername(CommanData.conn.grower.getFatherName(growerid));
                 cm.setVillagename(CommanData.conn.village.getVillageName(villcode));
                 cm.setPlotlocations(CommanData.conn.plotlocation.getAllPlotLocation(id));
                 completesurveys.add(cm);

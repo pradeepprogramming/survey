@@ -58,9 +58,9 @@ public class TablePlotLocation extends Table {
             for (cursor.moveToFirst(); !cursor.isAfterLast(); cursor.moveToNext()) {
                 PlotLcationModel pm=new PlotLcationModel(surveyid
                         ,cursor.getInt(cursor.getColumnIndex(Corner))
-                        ,cursor.getInt(cursor.getColumnIndex(Lat))
-                        ,cursor.getInt(cursor.getColumnIndex(Lang))
-                        ,cursor.getInt(cursor.getColumnIndex(Meter))
+                        ,cursor.getDouble(cursor.getColumnIndex(Lat))
+                        ,cursor.getDouble(cursor.getColumnIndex(Lang))
+                        ,cursor.getDouble(cursor.getColumnIndex(Meter))
                         );
                 locations.add(pm);
             }

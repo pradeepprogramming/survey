@@ -21,6 +21,7 @@ public class SurveyModel {
     }
 
     public SurveyModel(int plotvillagecode,int growerid, double area, int variety, int irrigation, int plantationmethod, String plantationdate, long mobile, long aadhar, int sharepercent) {
+        this.plotvillagecode=plotvillagecode;
         this.growerid = growerid;
         this.area = area;
         this.variety = variety;

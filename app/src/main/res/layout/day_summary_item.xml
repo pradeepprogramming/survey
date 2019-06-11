@@ -21,8 +21,9 @@
 
 
 
-            <RelativeLayout
+            <LinearLayout
                 android:layout_width="match_parent"
+                android:orientation="horizontal"
                 android:layout_height="wrap_content">
 
                 <TextView
@@ -45,6 +46,7 @@
                     android:layout_centerHorizontal="true"
                     android:layout_marginBottom="6dp"
                     android:layout_toRightOf="@+id/tvPlotV"
+                    android:layout_weight="2"
                     android:fontFamily="sans-serif-light"
                     android:paddingLeft="3dp"
                     android:text=""
@@ -60,15 +62,16 @@
                     android:background="@drawable/button3"
                     android:fontFamily="sans-serif-light"
                     android:padding="3dp"
-                    android:text="Button"
+                    android:text="Print"
                     android:textColor="@color/WhiteSmoke"
                     android:textSize="12dp" />
 
-            </RelativeLayout>
+            </LinearLayout>
 
 
-            <RelativeLayout
+            <LinearLayout
                 android:layout_width="match_parent"
+                android:orientation="horizontal"
                 android:layout_height="wrap_content">
 
                 <TextView
@@ -96,11 +99,12 @@
                     android:textSize="14dp" />
 
 
-            </RelativeLayout>
+            </LinearLayout>
 
 
-            <RelativeLayout
+            <LinearLayout
                 android:layout_width="match_parent"
+                android:orientation="horizontal"
                 android:layout_height="wrap_content">
 
                 <TextView
@@ -128,10 +132,11 @@
                     android:textSize="14dp" />
 
 
-            </RelativeLayout>
+            </LinearLayout>
 
-            <RelativeLayout
+            <LinearLayout
                 android:layout_width="match_parent"
+                android:orientation="horizontal"
                 android:layout_height="wrap_content">
 
                 <TextView
@@ -161,11 +166,12 @@
                     android:textSize="14dp" />
 
 
-            </RelativeLayout>
+            </LinearLayout>
 
 
-            <RelativeLayout
+            <LinearLayout
                 android:layout_width="match_parent"
+                android:orientation="horizontal"
                 android:layout_height="wrap_content">
 
                 <TextView
@@ -190,10 +196,13 @@
                     android:textColor="@color/blackcolour"
                     android:textSize="14dp" />
 
-            </RelativeLayout>
+            </LinearLayout>
 
-            <RelativeLayout
+
+
+            <LinearLayout
                 android:layout_width="match_parent"
+                android:orientation="horizontal"
                 android:layout_height="wrap_content">
 
                 <TextView
@@ -221,69 +230,42 @@
                     android:textSize="14dp" />
 
 
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:id="@+id/rlayoutGVill"
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/rlayoutGVillCode"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+
+                android:orientation="horizontal">
 
                 <TextView
-                    android:id="@+id/tvGVill"
+                    android:id="@+id/tvFather"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="sans-serif-light"
-                    android:text="Grower Vill:"
+                    android:text="Father Name :"
                     android:textColor="@color/blackcolour"
                     android:textSize="14dp"
                     android:textStyle="bold" />
 
                 <TextView
-                    android:id="@+id/tvGrowerVill"
+                    android:id="@+id/tvFatherName"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="5dp"
-                    android:layout_toRightOf="@+id/tvGVill"
+                    android:layout_toRightOf="@+id/tvFather"
                     android:fontFamily="sans-serif-light"
                     android:text=""
                     android:textAllCaps="false"
                     android:textColor="@color/blackcolour"
                     android:textSize="14dp" />
 
-            </RelativeLayout>
+            </LinearLayout>
 
 
-            <RelativeLayout
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <TextView
-                    android:id="@+id/tvGVillCode"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="sans-serif-light"
-                    android:text="Grower Vill Code:"
-                    android:textColor="@color/blackcolour"
-                    android:textSize="14dp"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:id="@+id/tvGrowerVillCode"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="5dp"
-                    android:layout_toRightOf="@+id/tvGVillCode"
-                    android:fontFamily="sans-serif-light"
-                    android:text=""
-                    android:textAllCaps="false"
-                    android:textColor="@color/blackcolour"
-                    android:textSize="14dp" />
-
-            </RelativeLayout>
-
-
-            <RelativeLayout
-                android:layout_width="match_parent"
+                android:orientation="horizontal"
                 android:layout_height="wrap_content">
 
                 <TextView
@@ -311,11 +293,12 @@
                     android:textSize="14dp" />
 
 
-            </RelativeLayout>
+            </LinearLayout>
 
 
-            <RelativeLayout
+            <LinearLayout
                 android:layout_width="match_parent"
+                android:orientation="horizontal"
                 android:layout_height="wrap_content">
 
                 <TextView
@@ -343,42 +326,14 @@
                     android:textSize="14dp" />
 
 
-            </RelativeLayout>
+            </LinearLayout>
 
 
-            <RelativeLayout
-                android:id="@+id/rlayoutGVillCode"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/rlayoutGVill">
 
-                <TextView
-                    android:id="@+id/tvFather"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="sans-serif-light"
-                    android:text="Father Name :"
-                    android:textColor="@color/blackcolour"
-                    android:textSize="14dp"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:id="@+id/tvFatherName"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="5dp"
-                    android:layout_toRightOf="@+id/tvFather"
-                    android:fontFamily="sans-serif-light"
-                    android:text=""
-                    android:textAllCaps="false"
-                    android:textColor="@color/blackcolour"
-                    android:textSize="14dp" />
-
-            </RelativeLayout>
-
-            <RelativeLayout
+            <LinearLayout
                 android:id="@+id/rlayoutMobile"
                 android:layout_width="match_parent"
+                android:orientation="horizontal"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/rlayoutPVillCode">
 
@@ -404,11 +359,12 @@
                     android:textColor="@color/blackcolour"
                     android:textSize="14dp" />
 
-            </RelativeLayout>
+            </LinearLayout>
 
-            <RelativeLayout
+            <LinearLayout
                 android:id="@+id/rlayCaneArea"
                 android:layout_width="match_parent"
+                android:orientation="horizontal"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/rlayLng">
 
@@ -433,12 +389,13 @@
                     android:textColor="@color/blackcolour"
                     android:textSize="14dp" />
 
-            </RelativeLayout>
+            </LinearLayout>
 
 
-            <RelativeLayout
+            <LinearLayout
                 android:id="@+id/rLayType"
                 android:layout_width="match_parent"
+                android:orientation="horizontal"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/rlayCaneArea">
 
@@ -463,11 +420,12 @@
                     android:textColor="@color/blackcolour"
                     android:textSize="14dp" />
 
-            </RelativeLayout>
+            </LinearLayout>
 
-            <RelativeLayout
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:orientation="horizontal"
                 android:layout_below="@+id/rLayType">
 
                 <TextView
@@ -491,11 +449,12 @@
                     android:textColor="@color/blackcolour"
                     android:textSize="14dp" />
 
-            </RelativeLayout>
+            </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+
                 android:layout_marginTop="8dp"
                 android:orientation="horizontal"
                 android:weightSum="4">
