@@ -31,7 +31,7 @@ public class GetAllGrowerTask extends AsyncTask <Void,Void,Boolean>{
 
                 JSONArray rootarr=new JSONArray(result);
 
-                CommanData.conn.variety.truncateTable();
+                CommanData.conn.grower.truncateTable();
 
                 for(int i=0;i<rootarr.length();i++) {
                     JSONObject dataobj = rootarr.getJSONObject(i);

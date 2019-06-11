@@ -32,7 +32,7 @@ public class GetAllIrrigationTask extends AsyncTask<Void,Void,Boolean> {
 
                 JSONArray rootarr=new JSONArray(result);
 
-                CommanData.conn.variety.truncateTable();
+                CommanData.conn.irrigation.truncateTable();
 
                 for(int i=0;i<rootarr.length();i++) {
                     JSONObject dataobj = rootarr.getJSONObject(i);
