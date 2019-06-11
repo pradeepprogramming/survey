@@ -53,7 +53,7 @@ public class TablePlotLocation extends Table {
         List<PlotLcationModel> locations=new ArrayList<>();
         try {
             String query="Select "+Corner+"," +Lat+","+Lang+","+Meter+
-                    " from "+getTableName()+" where "+SurveyID+"="+surveyid+"";
+                    " from "+getTableName()+" where "+SurveyID+"="+surveyid+";";
             Cursor cursor=db.rawQuery(query,null);
             for (cursor.moveToFirst(); !cursor.isAfterLast(); cursor.moveToNext()) {
                 PlotLcationModel pm=new PlotLcationModel(surveyid

@@ -39,7 +39,7 @@ public class DaySummaryAdapter extends RecyclerView.Adapter<DaySummaryAdapter.My
 
         holder.tvMobileNumber.setText(String.valueOf(arrayList.get(position).getMobile()));
 
-//        holder.tvCorner1.setText(String.valueOf(arrayList.get(position).getPlotlocations().get(position).getMeter()));
+   //   holder.tvCorner1.setText(String.valueOf(arrayList.get(position).getPlotlocations().get(position).getMeter()));
 
         Log.d(">>>", "onBindViewHolder: ");
     }
