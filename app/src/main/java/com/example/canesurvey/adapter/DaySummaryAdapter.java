@@ -27,22 +27,29 @@ public class DaySummaryAdapter extends RecyclerView.Adapter<DaySummaryAdapter.My
     public MyHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.day_summary_item, parent, false);
         return new DaySummaryAdapter.MyHolder(itemView);
-
     }
 
     @Override
     public void onBindViewHolder(@NonNull MyHolder holder, int position) {
-        holder.tvPlotVill.setText(String.valueOf(arrayList.get(position).getGrowername()));
+        holder.tvPlotVill.setText(String.valueOf(arrayList.get(position).getPlotvillagecode()));
+        holder.tvPlotVillName.setText(String.valueOf(arrayList.get(position).getPlotvillname()));
         holder.tvVillName.setText(String.valueOf(arrayList.get(position).getVillagename()));
         holder.tvGrowerName.setText(String.valueOf(arrayList.get(position).getGrowername()));
         holder.tvVarty.setText(String.valueOf(arrayList.get(position).getVariety()));
         holder.tvGrowerVill.setText(String.valueOf(arrayList.get(position).getVill()));
         holder.tvCaneArea.setText(String.valueOf(arrayList.get(position).getArea()));
         holder.tvFatherName.setText(String.valueOf(arrayList.get(position).getFathername()));
-
         holder.tvMobileNumber.setText(String.valueOf(arrayList.get(position).getMobile()));
 
-   //   holder.tvCorner1.setText(String.valueOf(arrayList.get(position).getPlotlocations().get(position).getMeter()));
+        holder.tvCaneArea.setText("0");
+        holder.tvType.setText("0");
+        holder.tvDataFrom.setText("0");
+
+        holder.tvCorner1.setText("0");
+        holder.tvCorner2.setText("0");
+        holder.tvCorner3.setText("0");
+        holder.tvCorner4.setText("0");
+
 
         Log.d(">>>", "onBindViewHolder: ");
     }
@@ -54,11 +61,8 @@ public class DaySummaryAdapter extends RecyclerView.Adapter<DaySummaryAdapter.My
 
     public class MyHolder extends RecyclerView.ViewHolder {
 
-        TextView tvGrowerName, tvVarty, tvCaneType, tvGrowerVill, tvGrowerCode, tvGrowerVillCode,tvPlotVill,tvVillName,tvVillCode,tvFatherName,
-                tvMobileNumber, tvCaneArea, tvType, tvDataFrom, tvCorner1, tvCorner2, tvCorner3, tvCorner4,tvPlotVillName;
-
-
-
+        TextView tvGrowerName, tvVarty, tvCaneType, tvGrowerVill, tvGrowerCode, tvGrowerVillCode,tvPlotVill,tvVillName,tvVillCode,
+                tvFatherName, tvMobileNumber, tvCaneArea, tvType, tvDataFrom, tvCorner1, tvCorner2, tvCorner3, tvCorner4,tvPlotVillName;
 
         public MyHolder(@NonNull View view) {
             super(view);
@@ -66,13 +70,11 @@ public class DaySummaryAdapter extends RecyclerView.Adapter<DaySummaryAdapter.My
             tvVarty = view.findViewById(R.id.tvVarty);
             tvCaneType = view.findViewById(R.id.tvCaneType);
             tvPlotVillName = view.findViewById(R.id.tvPlotVillName);
-
             tvGrowerCode = view.findViewById(R.id.tvGrowerCode);
             tvGrowerVill = view.findViewById(R.id.tvGrowerVill);
             tvGrowerVillCode = view.findViewById(R.id.tvGrowerVillCode);
             tvMobileNumber = view.findViewById(R.id.tvMobileNumber);
             tvCaneArea = view.findViewById(R.id.tvCaneArea);
-
             tvPlotVill = view.findViewById(R.id.tvPlotVill);
             tvVillName = view.findViewById(R.id.tvVillName);
             tvVillCode = view.findViewById(R.id.tvVillCode);
