@@ -65,7 +65,7 @@ public class TablePlantationMethod extends Table {
     {
         try {
             String query = "SELECT " + ID +
-                    " FROM " + getTableName() + " where " + Method + "=" + method + " ;";
+                    " FROM " + getTableName() + " where " + Method + "='" + method + "' ;";
             Cursor cursor = db.rawQuery(query, null);
             cursor.moveToFirst();
             int name = 0;

@@ -366,10 +366,12 @@ public class CapturePlot extends Fragment implements GpsTestListener, View.OnCli
     private void SaveSurvey() {
 
         if (FormValid()) {
-            DecimalFormat df=new DecimalFormat("#.###");
-            double area =Double.valueOf(df.format(calculateAreaOfGPSPolygonOnSphereInSquareMeters(allLocations, EARTH_RADIUS)/ 10000));
+            //DecimalFormat df=new DecimalFormat("#.###");
+            double area =calculateAreaOfGPSPolygonOnSphereInSquareMeters(allLocations, EARTH_RADIUS);
+            area/=10000;
+            String plotvill=mPlotVillCode.getText().toString();
             SurveyModel survey = new SurveyModel(
-                    Integer.valueOf(mPlotVillCode.getText().toString())
+                    Integer.parseInt(plotvill)
                     ,CommanData.conn.grower.getGrowerid(Integer.valueOf(mGVillCode.getText().toString()), Integer.valueOf(mGCode.getText().toString()))
                     , area
                     , Integer.valueOf(mVarietycode.getText().toString())
@@ -388,8 +390,9 @@ public class CapturePlot extends Fragment implements GpsTestListener, View.OnCli
                         allLocations.get(i).getLongitude(), Double.parseDouble(String.valueOf(lengths.get(i))));
                 CommanData.conn.plotlocation.Add(plotLcationModel);
                 Log.d(TAG, "SaveSurvey: " + plotLcationModel.getCorner());
-                cleanControls();
+
             }
+            cleanControls();
             Toast.makeText(this.getContext(), "Survey Saved", Toast.LENGTH_LONG).show();
         }
     }

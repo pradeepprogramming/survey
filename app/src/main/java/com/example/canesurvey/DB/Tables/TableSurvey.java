@@ -51,6 +51,7 @@ public class TableSurvey extends Table {
     public long Add(SurveyModel rt) {
 
         ContentValues cv = new ContentValues();
+        cv.put(PlotVillagecode,rt.getPlotvillagecode());
         cv.put(Growerid, rt.getGrowerid());
         cv.put(Area, rt.getArea());
         cv.put(Variety, rt.getVariety());
