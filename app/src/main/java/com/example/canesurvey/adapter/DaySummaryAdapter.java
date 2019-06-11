@@ -51,8 +51,11 @@ public class DaySummaryAdapter extends RecyclerView.Adapter<DaySummaryAdapter.My
 
     public class MyHolder extends RecyclerView.ViewHolder {
 
-        TextView tvGrowerName, tvVarty, tvCaneType, tvGrowerVill, tvGrowerCode, tvGrowerVillCode,
+        TextView tvGrowerName, tvVarty, tvCaneType, tvGrowerVill, tvGrowerCode, tvGrowerVillCode,tvPlotVill,tvVillName,tvVillCode,tvFatherName,
                 tvMobileNumber, tvCaneArea, tvType, tvDataFrom, tvCorner1, tvCorner2, tvCorner3, tvCorner4;
+
+
+
 
         public MyHolder(@NonNull View view) {
             super(view);
@@ -65,6 +68,12 @@ public class DaySummaryAdapter extends RecyclerView.Adapter<DaySummaryAdapter.My
             tvGrowerVillCode = view.findViewById(R.id.tvGrowerVillCode);
             tvMobileNumber = view.findViewById(R.id.tvMobileNumber);
             tvCaneArea = view.findViewById(R.id.tvCaneArea);
+
+            tvPlotVill = view.findViewById(R.id.tvPlotVill);
+            tvVillName = view.findViewById(R.id.tvVillName);
+            tvVillCode = view.findViewById(R.id.tvVillCode);
+            tvFatherName = view.findViewById(R.id.tvFatherName);
+
 
             tvType = view.findViewById(R.id.tvType);
             tvDataFrom = view.findViewById(R.id.tvDataFrom);
