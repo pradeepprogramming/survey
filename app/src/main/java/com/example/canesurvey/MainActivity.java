@@ -14,6 +14,7 @@ import android.location.LocationProvider;
 import android.os.Bundle;
 
 import com.example.canesurvey.Comman.CommanData;
+import com.example.canesurvey.View.DaySummary;
 import com.example.canesurvey.util.CheckPermission;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
@@ -42,6 +43,7 @@ import androidx.fragment.app.Fragment;
 
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import java.io.FileOutputStream;
 import java.util.ArrayList;
@@ -194,7 +196,13 @@ public class MainActivity extends AppCompatActivity
 
         } else if (id == R.id.nav_editplot) {
 
-        } else if (id == R.id.nav_dataimport) {
+        }else if(id==R.id.nav_daysummary){
+            DaySummary fr = new DaySummary();
+            fragment=fr;
+            this.setTitle(fr.TAG);
+            getSupportFragmentManager().beginTransaction().replace(R.id.fholder, fragment).addToBackStack(fr.TAG).commit();
+
+        }else if (id == R.id.nav_dataimport) {
             ImportData fr = new ImportData();
             fragment=fr;
             this.setTitle(fr.TAG);

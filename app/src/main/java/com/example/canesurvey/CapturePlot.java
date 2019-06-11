@@ -30,6 +30,7 @@ import android.widget.Toast;
 import com.example.canesurvey.Async.GetSpinnerData;
 import com.example.canesurvey.Comman.CommanData;
 import com.example.canesurvey.View.DatePickerFragment;
+import com.example.canesurvey.model.PlotLcationModel;
 import com.example.canesurvey.model.SurveyModel;
 import com.example.canesurvey.util.GpsTestUtil;
 import com.example.canesurvey.util.UIUtils;
@@ -42,7 +43,7 @@ import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
 
 
-public class CapturePlot extends Fragment implements GpsTestListener, View.OnClickListener, TextWatcher, View.OnFocusChangeListener{
+public class CapturePlot extends Fragment implements GpsTestListener, View.OnClickListener, TextWatcher, View.OnFocusChangeListener {
 
     public String TAG = "CapturePlotFragment";
     private static final double EARTH_RADIUS = 6371000;// meters
@@ -170,6 +171,7 @@ public class CapturePlot extends Fragment implements GpsTestListener, View.OnCli
         mMobileno = v.findViewById(R.id.cMobileno);
         mSharePercent = v.findViewById(R.id.cSharePercent);
         mFathername = v.findViewById(R.id.cFatherName);
+
         mPlantation = v.findViewById(R.id.cSpinnerPlantation);
         mIrrigation = v.findViewById(R.id.cSpinnerIrrigation);
 
@@ -363,28 +365,49 @@ public class CapturePlot extends Fragment implements GpsTestListener, View.OnCli
     private void SaveSurvey() {
 
         if (FormValid()) {
-            float area =Float.valueOf(String.valueOf(calculateAreaOfGPSPolygonOnSphereInSquareMeters(allLocations, EARTH_RADIUS)))/10000;
-            SurveyModel survey=new SurveyModel(
-                    CommanData.conn.grower.getGrowerid(Integer.valueOf(mGVillCode.getText().toString()),Integer.valueOf(mGCode.getText().toString()))
-                    ,area
-                    ,Integer.valueOf(mVarietycode.getText().toString())
-                    ,CommanData.conn.irrigation.getID(mIrrigation.getSelectedItem().toString())
-                    ,CommanData.conn.plantationMethod.getID(mPlantation.getSelectedItem().toString())
-                    ,mPlantationDate.getText().toString()
-                    ,0
-                    ,0
-                    ,Integer.valueOf(mSharePercent.getText().toString())
+            float area = Float.valueOf(String.valueOf(calculateAreaOfGPSPolygonOnSphereInSquareMeters(allLocations, EARTH_RADIUS))) / 10000;
+            SurveyModel survey = new SurveyModel(
+                    CommanData.conn.grower.getGrowerid(Integer.valueOf(mGVillCode.getText().toString()), Integer.valueOf(mGCode.getText().toString()))
+                    , area
+                    , Integer.valueOf(mVarietycode.getText().toString())
+                    , CommanData.conn.irrigation.getID(mIrrigation.getSelectedItem().toString())
+                    , CommanData.conn.plantationMethod.getID(mPlantation.getSelectedItem().toString())
+                    , mPlantationDate.getText().toString()
+                    , 0
+                    , 0
+                    , Integer.valueOf(mSharePercent.getText().toString())
             );
-            CommanData.conn.survey.Add(survey);
 
+            long lastid = CommanData.conn.survey.Add(survey);
             // now insert plot lat ,lang in plotlocation table
-
-
-            Toast.makeText(this.getContext(),"Survey Saved",Toast.LENGTH_LONG).show();
+            for (int i = 0; i <= 3; i++) {
+                PlotLcationModel plotLcationModel = new PlotLcationModel((int) lastid, i + 1, allLocations.get(i).getLatitude(),
+                        allLocations.get(i).getLongitude(), Double.parseDouble(String.valueOf(lengths.get(i))));
+                CommanData.conn.plotlocation.Add(plotLcationModel);
+                Log.d(TAG, "SaveSurvey: " + plotLcationModel.getCorner());
+                cleanControls();
+            }
+            Toast.makeText(this.getContext(), "Survey Saved", Toast.LENGTH_LONG).show();
         }
-
-
     }
+    private void cleanControls(){
+        mPlotVillCode.setText("");
+        mPlotVillName.setText("");
+        mVarietycode.setText("");
+        mVarietyname.setText("");
+        mCanetypeCode.setText("");
+        mCanetypeName.setText("");
+        mPlantationDate.setText("");
+        mGVillCode.setText("");
+        mGVillName.setText("");
+        mGCode.setText("");
+        mGName.setText("");
+        mMobileno.setText("");
+        mSharePercent.setText("");
+        mFathername.setText("");
+    }
+
+
 
     private boolean FormValid() {
         if (mPlotVillName.getText().length() <= 0)

@@ -1,12 +1,13 @@
 package com.example.canesurvey.model;
 
 public class PlotLcationModel {
-    private  int ID;
+    private int ID;
     private int surveyid;
     private int corner;
     private double lat;
     private double lang;
     private double meter;
+
 
     public PlotLcationModel(int surveyid, int corner, double lat, double lang, double meter) {
         this.surveyid = surveyid;
