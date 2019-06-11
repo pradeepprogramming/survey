@@ -4,8 +4,13 @@ import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
+import com.example.canesurvey.Comman.CommanData;
+import com.example.canesurvey.model.CompleteSurveyModel;
 import com.example.canesurvey.model.GrowerModel;
 import com.example.canesurvey.model.SurveyModel;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class TableSurvey extends Table {
     public TableSurvey(SQLiteDatabase db) {
@@ -58,4 +63,32 @@ public class TableSurvey extends Table {
     }
 
 
+    public List<CompleteSurveyModel> getCompleteSurvey() {
+        try {
+            List<CompleteSurveyModel> completesurveys=new ArrayList<>();
+            TableGrower tgrower = CommanData.conn.grower;
+            String query = "select * from " + getTableName() + " s join " + tgrower.getTableName() + " g on " + Growerid + "= g." + tgrower.ID + "";
+            Cursor cursor = db.rawQuery(query, null);
+            for (cursor.moveToFirst(); !cursor.isAfterLast(); cursor.moveToNext()) {
+                CompleteSurveyModel cm = new CompleteSurveyModel();
+                cm.setGrowerid(cursor.getInt(cursor.getColumnIndex(Growerid)));
+                cm.setArea(cursor.getInt(cursor.getColumnIndex(Area)));
+                cm.setVariety(cursor.getInt(cursor.getColumnIndex(Variety)));
+                cm.setIrrigation(cursor.getInt(cursor.getColumnIndex(Irigation)));
+                cm.setPlantationmethod(cursor.getInt(cursor.getColumnIndex(PlantationMethod)));
+                cm.setPlantationdate(cursor.getString(cursor.getColumnIndex(PlantationDate)));
+                cm.setMobile(cursor.getLong(cursor.getColumnIndex(MobileNo)));
+                cm.setAadhar(cursor.getLong(cursor.getColumnIndex(AadharNo)));
+                cm.setSharepercent(cursor.getInt(cursor.getColumnIndex(TotalSharePercent)));
+                cm.setVill(cursor.getInt(cursor.getColumnIndex(tgrower.VillageCode)));
+                cm.setGrow(cursor.getInt(cursor.getColumnIndex(tgrower.GrowerCode)));
+                cm.setPlotlocations(CommanData.conn.plotlocation.getAllPlotLocation(cursor.getInt(cursor.getColumnIndex(tgrower.GrowerCode))));
+                completesurveys.add(cm);
+            }
+            return completesurveys;
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        return null;
+    }
 }

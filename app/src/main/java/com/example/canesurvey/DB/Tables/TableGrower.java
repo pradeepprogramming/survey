@@ -14,9 +14,9 @@ public class TableGrower extends Table {
         setTableName("Grower");
     }
 
-    private String ID = "ID";
-    private String GrowerCode = "GrowerCode";
-    private String VillageCode = "VillageCode";
+     String ID = "ID";
+     String GrowerCode = "GrowerCode";
+     String VillageCode = "VillageCode";
     private String GrowerName = "GrowerName";
     private String FatherName = "FatherName";
     private String Unicode = "Unicode";

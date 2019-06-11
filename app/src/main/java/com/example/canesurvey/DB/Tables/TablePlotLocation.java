@@ -1,9 +1,14 @@
 package com.example.canesurvey.DB.Tables;
 
 import android.content.ContentValues;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
+import com.example.canesurvey.model.PlantationModel;
 import com.example.canesurvey.model.PlotLcationModel;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class TablePlotLocation extends Table {
     public TablePlotLocation(SQLiteDatabase db)
@@ -42,5 +47,28 @@ public class TablePlotLocation extends Table {
         cv.put(Meter, rt.getMeter());
 
         return Add(cv);
+    }
+
+    public List<PlotLcationModel> getAllPlotLocation(int surveyid) {
+        List<PlotLcationModel> locations=new ArrayList<>();
+        try {
+            String query="Select "+Corner+"," +Lat+","+Lang+","+Meter+
+                    " from "+getTableName()+" where "+SurveyID+"="+surveyid+"";
+            Cursor cursor=db.rawQuery(query,null);
+            for (cursor.moveToFirst(); !cursor.isAfterLast(); cursor.moveToNext()) {
+                PlotLcationModel pm=new PlotLcationModel(surveyid
+                        ,cursor.getInt(cursor.getColumnIndex(Corner))
+                        ,cursor.getInt(cursor.getColumnIndex(Lat))
+                        ,cursor.getInt(cursor.getColumnIndex(Lang))
+                        ,cursor.getInt(cursor.getColumnIndex(Meter))
+                        );
+                locations.add(pm);
+            }
+            return locations;
+
+        }catch (Exception ex){
+            ex.printStackTrace();
+        }
+        return null;
     }
 }
