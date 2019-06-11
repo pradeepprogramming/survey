@@ -5,7 +5,7 @@ import java.util.Date;
 public class SurveyModel {
     private int ID;
     private int growerid;
-    private float area;
+    private double area;
     private int variety;
     private int irrigation;
     private int plantationmethod;
@@ -18,7 +18,7 @@ public class SurveyModel {
 
     }
 
-    public SurveyModel(int growerid, float area, int variety, int irrigation, int plantationmethod, String plantationdate, long mobile, long aadhar, int sharepercent) {
+    public SurveyModel(int growerid, double area, int variety, int irrigation, int plantationmethod, String plantationdate, long mobile, long aadhar, int sharepercent) {
         this.growerid = growerid;
         this.area = area;
         this.variety = variety;
@@ -46,11 +46,11 @@ public class SurveyModel {
         this.growerid = growerid;
     }
 
-    public float getArea() {
+    public double getArea() {
         return area;
     }
 
-    public void setArea(float area) {
+    public void setArea(double area) {
         this.area = area;
     }
 

@@ -42,13 +42,13 @@ public class CompleteSurveyModel extends SurveyModel {
         jobj.put("vill",vill);
         jobj.put("grow",grow);
         jobj.put("area",getArea());
-        jobj.put("variety",getArea());
-        jobj.put("irrigation",getArea());
-        jobj.put("plantation",getArea());
-        jobj.put("plantationdate",getArea());
-        jobj.put("mobile",getArea());
-        jobj.put("aadhar",getArea());
-        jobj.put("sharepercent",getArea());
+        jobj.put("variety",getVariety());
+        jobj.put("irrigation",getIrrigation());
+        jobj.put("plantation",getPlantationmethod());
+        jobj.put("plantationdate",getPlantationdate());
+        jobj.put("mobile",getMobile());
+        jobj.put("aadhar",getAadhar());
+        jobj.put("sharepercent",getSharepercent());
         JSONArray ar=new JSONArray();
         for (PlotLcationModel plot:plotlocations
              ) {

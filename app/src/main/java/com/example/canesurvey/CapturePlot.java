@@ -365,7 +365,7 @@ public class CapturePlot extends Fragment implements GpsTestListener, View.OnCli
     private void SaveSurvey() {
 
         if (FormValid()) {
-            float area = Float.valueOf(String.valueOf(calculateAreaOfGPSPolygonOnSphereInSquareMeters(allLocations, EARTH_RADIUS))) / 10000;
+            double area =(calculateAreaOfGPSPolygonOnSphereInSquareMeters(allLocations, EARTH_RADIUS) / 10000);
             SurveyModel survey = new SurveyModel(
                     CommanData.conn.grower.getGrowerid(Integer.valueOf(mGVillCode.getText().toString()), Integer.valueOf(mGCode.getText().toString()))
                     , area
