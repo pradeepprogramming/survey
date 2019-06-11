@@ -1,5 +1,6 @@
 package com.example.canesurvey;
 
+import android.app.DatePickerDialog;
 import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.location.GnssMeasurementsEvent;
@@ -15,26 +16,33 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Adapter;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.SpinnerAdapter;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.canesurvey.Async.GetSpinnerData;
 import com.example.canesurvey.Comman.CommanData;
+import com.example.canesurvey.View.DatePickerFragment;
+import com.example.canesurvey.model.SurveyModel;
 import com.example.canesurvey.util.GpsTestUtil;
 import com.example.canesurvey.util.UIUtils;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
+import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
 
 
-public class CapturePlot extends Fragment implements GpsTestListener, View.OnClickListener, TextWatcher, View.OnFocusChangeListener {
+public class CapturePlot extends Fragment implements GpsTestListener, View.OnClickListener, TextWatcher, View.OnFocusChangeListener{
 
     public String TAG = "CapturePlotFragment";
     private static final double EARTH_RADIUS = 6371000;// meters
@@ -53,6 +61,7 @@ public class CapturePlot extends Fragment implements GpsTestListener, View.OnCli
     private String lat, lon;
     private Location locationA, locationB;
     List<Location> allLocations = new ArrayList<>();
+    List<Float> lengths = new ArrayList<>();
     private Button btncapturelocation, btnAddShare, btnSaveSurvey;
     private long mFixTime;
 
@@ -79,7 +88,7 @@ public class CapturePlot extends Fragment implements GpsTestListener, View.OnCli
         View v = inflater.inflate(R.layout.fragment_capture_plot, container, false);
 
         LoadControls(v);
-        AddClickListener();
+        AddListener();
         ExecuteTasks();
 
 
@@ -94,7 +103,7 @@ public class CapturePlot extends Fragment implements GpsTestListener, View.OnCli
         spinnerdata2task.execute();*/
     }
 
-    private void AddClickListener() {
+    private void AddListener() {
         btncapturelocation.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -115,6 +124,8 @@ public class CapturePlot extends Fragment implements GpsTestListener, View.OnCli
         mCanetypeCode.setOnFocusChangeListener(this);
         mGVillCode.setOnFocusChangeListener(this);
         mSharePercent.setOnFocusChangeListener(this);
+        mPlantationDate.setOnFocusChangeListener(this);
+        btnSaveSurvey.setOnClickListener(this);
 
         plantationlist = CommanData.conn.plantationMethod.getNameList();
         plantationadapter = new ArrayAdapter(this.getContext(), android.R.layout.simple_spinner_dropdown_item, plantationlist);
@@ -161,6 +172,7 @@ public class CapturePlot extends Fragment implements GpsTestListener, View.OnCli
         mFathername = v.findViewById(R.id.cFatherName);
         mPlantation = v.findViewById(R.id.cSpinnerPlantation);
         mIrrigation = v.findViewById(R.id.cSpinnerIrrigation);
+
         btnAddShare = v.findViewById(R.id.cBtnAddshare);
         btnAddShare.setEnabled(false);
         mSharePercent.setText("100");
@@ -342,8 +354,52 @@ public class CapturePlot extends Fragment implements GpsTestListener, View.OnCli
 
     @Override
     public void onClick(View view) {
+        if (view == btnSaveSurvey) {
+            SaveSurvey();
+        }
+
+    }
+
+    private void SaveSurvey() {
+
+        if (FormValid()) {
+            float area =Float.valueOf(String.valueOf(calculateAreaOfGPSPolygonOnSphereInSquareMeters(allLocations, EARTH_RADIUS)))/10000;
+            SurveyModel survey=new SurveyModel(
+                    CommanData.conn.grower.getGrowerid(Integer.valueOf(mGVillCode.getText().toString()),Integer.valueOf(mGCode.getText().toString()))
+                    ,area
+                    ,Integer.valueOf(mVarietycode.getText().toString())
+                    ,CommanData.conn.irrigation.getID(mIrrigation.getSelectedItem().toString())
+                    ,CommanData.conn.plantationMethod.getID(mPlantation.getSelectedItem().toString())
+                    ,mPlantationDate.getText().toString()
+                    ,0
+                    ,0
+                    ,Integer.valueOf(mSharePercent.getText().toString())
+            );
+
+            CommanData.conn.survey.Add(survey);
+
+            Toast.makeText(this.getContext(),"Survey Saved",Toast.LENGTH_LONG).show();
+        }
 
 
+    }
+
+    private boolean FormValid() {
+        if (mPlotVillName.getText().length() <= 0)
+            return false;
+        else if (mVarietyname.getText().length() <= 0)
+            return false;
+        else if (mCanetypeName.getText().length() <= 0)
+            return false;
+        else if (mPlantationDate.getText().length() <= 0)
+            return false;
+        else if (mGVillName.getText().length() <= 0)
+            return false;
+        else if (mGName.getText().length() <= 0)
+            return false;
+        else if (mSharePercent.getText().length() <= 0)
+            return false;
+        return true;
     }
 
     private void UpdateCornerLatLon() {
@@ -360,6 +416,7 @@ public class CapturePlot extends Fragment implements GpsTestListener, View.OnCli
 
                 locationB = allLocations.get(0);
                 txtmtr1.setText(String.valueOf(locationA.distanceTo(locationB)));
+                lengths.add(locationA.distanceTo(locationB));
                 txtlat2.setText(String.valueOf(locationA.getLatitude()));
                 txtlon2.setText(String.valueOf(locationA.getLongitude()));
                 locationA = new Location("Pointc");
@@ -370,6 +427,7 @@ public class CapturePlot extends Fragment implements GpsTestListener, View.OnCli
                 allLocations.add(locationA);
                 locationB = allLocations.get(1);
                 txtmtr2.setText(String.valueOf(locationA.distanceTo(locationB)));
+                lengths.add(locationA.distanceTo(locationB));
                 txtlat3.setText(String.valueOf(locationA.getLatitude()));
                 txtlon3.setText(String.valueOf(locationA.getLongitude()));
                 locationA = new Location("PointD");
@@ -379,10 +437,12 @@ public class CapturePlot extends Fragment implements GpsTestListener, View.OnCli
                 allLocations.add(locationA);
                 locationB = allLocations.get(2);
                 txtmtr3.setText(String.valueOf(locationA.distanceTo(locationB)));
+                lengths.add(locationA.distanceTo(locationB));
                 txtlat4.setText(String.valueOf(locationA.getLatitude()));
                 txtlon4.setText(String.valueOf(locationA.getLongitude()));
                 locationB = allLocations.get(0);
                 txtmtr4.setText(String.valueOf(locationA.distanceTo(locationB)));
+                lengths.add(locationA.distanceTo(locationB));
                 currentcorer = 4;
 
                 AreaCalculation();
@@ -517,6 +577,19 @@ public class CapturePlot extends Fragment implements GpsTestListener, View.OnCli
     public void onFocusChange(View view, boolean b) {
         if (b) {
             currenttextchangecontrol = view;
+
+            if (view == mPlantationDate) {
+                Calendar cal = Calendar.getInstance();
+                DatePickerDialog datedialog = new DatePickerDialog(this.getContext(), new DatePickerDialog.OnDateSetListener() {
+                    @Override
+                    public void onDateSet(DatePicker datePicker, int i, int i1, int i2) {
+                        mPlantationDate.setText(datePicker.getYear() + "/" + (datePicker.getMonth() + 1) + "/" + datePicker.getDayOfMonth());
+                        mIrrigation.requestFocus();
+                    }
+                }, cal.get(Calendar.YEAR), 03, 01);
+
+                datedialog.show();
+            }
         }
     }
 

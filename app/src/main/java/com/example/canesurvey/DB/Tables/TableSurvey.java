@@ -1,6 +1,10 @@
 package com.example.canesurvey.DB.Tables;
 
+import android.content.ContentValues;
 import android.database.sqlite.SQLiteDatabase;
+
+import com.example.canesurvey.model.GrowerModel;
+import com.example.canesurvey.model.SurveyModel;
 
 public class TableSurvey extends Table {
     public TableSurvey(SQLiteDatabase db)
@@ -36,5 +40,21 @@ public class TableSurvey extends Table {
 
                 .append(");").toString();
         return query;
+    }
+
+    public boolean Add(SurveyModel rt) {
+
+        ContentValues cv = new ContentValues();
+        cv.put(Growerid, rt.getGrowerid());
+        cv.put(Area, rt.getArea());
+        cv.put(Variety, rt.getVariety());
+        cv.put(Irigation, rt.getIrrigation());
+        cv.put(PlantationMethod, rt.getPlantationmethod());
+        cv.put(PlantationDate, rt.getPlantationdate());
+        cv.put(MobileNo, rt.getMobile());
+        cv.put(AadharNo, rt.getAadhar());
+        cv.put(TotalSharePercent, rt.getSharepercent());
+
+        return Add(cv);
     }
 }

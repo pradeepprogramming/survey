@@ -60,4 +60,22 @@ public class TablePlantationMethod extends Table {
         }
         return null;
     }
+
+    public int getID(String method)
+    {
+        try {
+            String query = "SELECT " + ID +
+                    " FROM " + getTableName() + " where " + Method + "=" + method + " ;";
+            Cursor cursor = db.rawQuery(query, null);
+            cursor.moveToFirst();
+            int name = 0;
+            name = cursor.getInt(0);
+            cursor.close();
+            return name;
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return 0;
+    }
 }
