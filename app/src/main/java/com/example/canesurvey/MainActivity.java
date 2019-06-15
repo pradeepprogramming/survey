@@ -33,6 +33,7 @@ import android.telephony.TelephonyManager;
 import android.view.View;
 
 import com.google.android.material.navigation.NavigationView;
+import com.softland.palmtecandro.palmtecandro;
 
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
@@ -47,6 +48,7 @@ import android.widget.Toast;
 
 import java.io.FileOutputStream;
 import java.util.ArrayList;
+import java.util.Base64;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, LocationListener {
@@ -77,6 +79,11 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        String texttoprint="this is text to print";
+
+        palmtecandro.jnidevDataByteWrite(texttoprint.getBytes(),10);
+        palmtecandro.jnidevPrint();
 
 
         /*FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
