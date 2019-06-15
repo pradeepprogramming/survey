@@ -24,6 +24,7 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.SpinnerAdapter;
+import android.widget.TableLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -39,6 +40,7 @@ import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
+import java.util.zip.Inflater;
 
 import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
@@ -64,7 +66,9 @@ public class CapturePlot extends Fragment implements GpsTestListener, View.OnCli
     private Location locationA, locationB;
     List<Location> allLocations = new ArrayList<>();
     List<Float> lengths = new ArrayList<>();
+    List<View> sharelist=new ArrayList<>();
     private Button btncapturelocation, btnAddShare, btnSaveSurvey;
+    private TableLayout tableShare;
     private long mFixTime;
 
     StringBuilder sbuilder = null;
@@ -128,7 +132,7 @@ public class CapturePlot extends Fragment implements GpsTestListener, View.OnCli
         mSharePercent.setOnFocusChangeListener(this);
         mPlantationDate.setOnFocusChangeListener(this);
         btnSaveSurvey.setOnClickListener(this);
-
+        btnAddShare.setOnClickListener(this);
         plantationlist = CommanData.conn.plantationMethod.getNameList();
         plantationadapter = new ArrayAdapter(this.getContext(), android.R.layout.simple_spinner_dropdown_item, plantationlist);
         mPlantation.setAdapter(plantationadapter);
@@ -177,6 +181,7 @@ public class CapturePlot extends Fragment implements GpsTestListener, View.OnCli
         mIrrigation = v.findViewById(R.id.cSpinnerIrrigation);
 
         btnAddShare = v.findViewById(R.id.cBtnAddshare);
+        tableShare=v.findViewById(R.id.cShareTable);
         btnAddShare.setEnabled(false);
         mSharePercent.setText("100");
         btnSaveSurvey = v.findViewById(R.id.cBtnNewPlot);
@@ -359,8 +364,22 @@ public class CapturePlot extends Fragment implements GpsTestListener, View.OnCli
     public void onClick(View view) {
         if (view == btnSaveSurvey) {
             SaveSurvey();
+        } else if(view==btnAddShare){
+            AddShareView();
         }
 
+    }
+
+    private void AddShareView() {
+        View shareview=View.inflate(getContext(),R.layout.layoutsharedgrower,null);
+        EditText spercent,svill,sgrow,svillname,sgrowname;
+        spercent=shareview.findViewById(R.id.cSharePercent);
+        svill=shareview.findViewById(R.id.cSharePercent);
+        sgrow=shareview.findViewById(R.id.cSharePercent);
+        svillname=shareview.findViewById(R.id.cSharePercent);
+        sgrowname=shareview.findViewById(R.id.cSharePercent);
+
+        tableShare.addView(shareview);
     }
 
     private void SaveSurvey() {
