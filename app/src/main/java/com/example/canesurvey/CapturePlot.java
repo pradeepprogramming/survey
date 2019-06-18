@@ -403,9 +403,18 @@ public class CapturePlot extends Fragment implements GpsTestListener, View.OnCli
         se.getSvillname().setText(moSvillname.getText());
         se.getSgrowname().setText(moSGrowname.getText());
 
-
         tableShare.addView(shareview);
         sharelist.add(se);
+        ShareDetails sd=new ShareDetails(Integer.valueOf(moSharepercent.getText().toString()),Integer.getInteger(moSVill.getText().toString()),Integer.getInteger(moSgrow.getText().toString()));
+        sharedetailslist.add(sd);
+
+        // clean data
+        moSharepercent.setText("");
+        moSVill.setText("");
+        moSgrow.setText("");
+        moSvillname.setText("");
+        moSGrowname.setText("");
+
     }
 
     private void SaveSurvey() {

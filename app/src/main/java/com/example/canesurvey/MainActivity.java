@@ -18,6 +18,7 @@ import com.example.canesurvey.Comman.CommanData;
 import com.example.canesurvey.View.DaySummary;
 import com.example.canesurvey.util.CheckPermission;
 import com.example.canesurvey.util.ESC;
+import com.example.canesurvey.util.PrinterPrint;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 
@@ -87,14 +88,8 @@ public class MainActivity extends AppCompatActivity
         setSupportActionBar(toolbar);
 
 
-        String texttoprint = "this is text to print";
-
-        String[] column = new String[]{"Tax Invoice"};
-        Integer[] margin = new Integer[]{10};                        //no of charecters that is supported in one line of the printer
-        Integer[] align = new Integer[]{1};                            //alignment (0-left,1-center,2- right)
-
-        String printeData = ESC.setCHARASTYLE(0, 1, 1, 1, 0)
-                + ESC.printCOLUMN(column, margin, align) + ESC.RESETCHARASIZE + ESC.NEWLINE;
+        //palmtecandro.jnidevDataByteWrite(printeData.getBytes(),printstring.length());
+       // palmtecandro.jnidevClose();
 
 
         /*FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
