@@ -58,7 +58,7 @@ public class CapturePlot extends Fragment implements GpsTestListener, View.OnCli
     private TextView txtlat1, txtlat2, txtlat3, txtlat4, txtlon1, txtlon2, txtlon3, txtlon4, txtmtr1, txtmtr2, txtmtr3, txtmtr4;
     private TextView txtarea, txtcurrentlatlon, txtaccu;
     private EditText mPlotVillCode, mPlotVillName, mVarietycode, mVarietyname, mCanetypeCode, mCanetypeName,
-            mPlantationDate, mGVillCode, mGVillName, mFathername, mGCode, mGName, mMobileno, mSharePercent,moSharepercent,moSVill,moSgrow,moSvillname,moSGrowname;
+            mPlantationDate, mGVillCode, mGVillName, mFathername, mGCode, mGName, mMobileno, mSharePercent, moSharepercent, moSVill, moSgrow, moSvillname, moSGrowname;
     private Spinner mPlantation, mIrrigation;
 
     private Resources mRes;
@@ -68,8 +68,8 @@ public class CapturePlot extends Fragment implements GpsTestListener, View.OnCli
     private Location locationA, locationB;
     List<Location> allLocations = new ArrayList<>();
     List<Float> lengths = new ArrayList<>();
-    List<ShareEdittext> sharelist=new ArrayList<>();
-    List<ShareDetails> sharedetailslist=new ArrayList<>();
+    List<ShareEdittext> sharelist = new ArrayList<>();
+    List<ShareDetails> sharedetailslist = new ArrayList<>();
     private Button btncapturelocation, btnAddShare, btnSaveSurvey;
     private TableLayout tableShare;
     private long mFixTime;
@@ -190,14 +190,14 @@ public class CapturePlot extends Fragment implements GpsTestListener, View.OnCli
 
         mPlantation = v.findViewById(R.id.cSpinnerPlantation);
         mIrrigation = v.findViewById(R.id.cSpinnerIrrigation);
-        moSharepercent=v.findViewById(R.id.cSpercent);
-        moSVill=v.findViewById(R.id.cSvill);
-        moSgrow=v.findViewById(R.id.cSgrow);
-        moSvillname=v.findViewById(R.id.cSvillname);
-        moSGrowname=v.findViewById(R.id.cSgrowername);
+        moSharepercent = v.findViewById(R.id.cSpercent);
+        moSVill = v.findViewById(R.id.cSvill);
+        moSgrow = v.findViewById(R.id.cSgrow);
+        moSvillname = v.findViewById(R.id.cSvillname);
+        moSGrowname = v.findViewById(R.id.cSgrowername);
 
         btnAddShare = v.findViewById(R.id.cBtnAddshare);
-        tableShare=v.findViewById(R.id.cShareTable);
+        tableShare = v.findViewById(R.id.cShareTable);
         btnAddShare.setEnabled(false);
         mSharePercent.setText("100");
         btnSaveSurvey = v.findViewById(R.id.cBtnNewPlot);
@@ -380,48 +380,44 @@ public class CapturePlot extends Fragment implements GpsTestListener, View.OnCli
     public void onClick(View view) {
         if (view == btnSaveSurvey) {
             SaveSurvey();
-        } else if(view==btnAddShare){
+        } else if (view == btnAddShare) {
             AddShareView();
         }
 
     }
 
     private void AddShareView() {
-        View shareview=View.inflate(getContext(),R.layout.layoutsharedgrower,null);
-        ShareEdittext se=new ShareEdittext(
-        shareview.findViewById(R.id.cSharePercent)
-        ,shareview.findViewById(R.id.cSharePercent)
-        ,shareview.findViewById(R.id.cSharePercent)
-        ,shareview.findViewById(R.id.cSharePercent)
-        ,shareview.findViewById(R.id.cSharePercent)
+        View shareview = View.inflate(getContext(), R.layout.layoutsharedgrower, null);
+        ShareEdittext se = new ShareEdittext(
+                shareview.findViewById(R.id.cSpercent)
+                , shareview.findViewById(R.id.cSvill)
+                , shareview.findViewById(R.id.cSgrow)
+                , shareview.findViewById(R.id.cSvillname)
+                , shareview.findViewById(R.id.cSgrowername)
+                , shareview
         );
-        sharelist.add(se);
 
-        se.getSpercent().setTag(1,sharelist.size()-1);
-        se.getSpercent().setTag(2,"percent");
-        se.getSpercent().addTextChangedListener(this);
+        se.getSpercent().setText(moSharepercent.getText());
+        se.getSvill().setText(moSVill.getText());
+        se.getSgrow().setText(moSgrow.getText());
+        se.getSvillname().setText(moSvillname.getText());
+        se.getSgrowname().setText(moSGrowname.getText());
 
-        se.getSvill().setTag(1,sharelist.size()-1);
-        se.getSvill().setTag(2,"vill");
-        se.getSvill().addTextChangedListener(this);
-
-        se.getSgrow().setTag(1,sharelist.size()-1);
-        se.getSgrow().setTag(2,"grow");
-        se.getSgrow().addTextChangedListener(this);
 
         tableShare.addView(shareview);
+        sharelist.add(se);
     }
 
     private void SaveSurvey() {
 
         if (FormValid()) {
             //DecimalFormat df=new DecimalFormat("#.###");
-            double area =calculateAreaOfGPSPolygonOnSphereInSquareMeters(allLocations, EARTH_RADIUS);
-            area/=10000;
-            String plotvill=mPlotVillCode.getText().toString();
+            double area = calculateAreaOfGPSPolygonOnSphereInSquareMeters(allLocations, EARTH_RADIUS);
+            area /= 10000;
+            String plotvill = mPlotVillCode.getText().toString();
             SurveyModel survey = new SurveyModel(
                     Integer.parseInt(plotvill)
-                    ,CommanData.conn.grower.getGrowerid(Integer.valueOf(mGVillCode.getText().toString()), Integer.valueOf(mGCode.getText().toString()))
+                    , CommanData.conn.grower.getGrowerid(Integer.valueOf(mGVillCode.getText().toString()), Integer.valueOf(mGCode.getText().toString()))
                     , area
                     , Integer.valueOf(mVarietycode.getText().toString())
                     , CommanData.conn.irrigation.getID(mIrrigation.getSelectedItem().toString())
@@ -445,7 +441,8 @@ public class CapturePlot extends Fragment implements GpsTestListener, View.OnCli
             Toast.makeText(this.getContext(), "Survey Saved", Toast.LENGTH_LONG).show();
         }
     }
-    private void cleanControls(){
+
+    private void cleanControls() {
         mPlotVillCode.setText("");
         mPlotVillName.setText("");
         mVarietycode.setText("");
@@ -461,7 +458,6 @@ public class CapturePlot extends Fragment implements GpsTestListener, View.OnCli
         mSharePercent.setText("");
         mFathername.setText("");
     }
-
 
 
     private boolean FormValid() {

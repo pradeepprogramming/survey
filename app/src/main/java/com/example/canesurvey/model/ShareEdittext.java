@@ -1,16 +1,27 @@
 package com.example.canesurvey.model;
 
+import android.view.View;
 import android.widget.EditText;
 
 public class ShareEdittext {
     EditText spercent,svill,sgrow,svillname,sgrowname;
+    View row;
 
-    public ShareEdittext(EditText spercent, EditText svill, EditText sgrow, EditText svillname, EditText sgrowname) {
+    public ShareEdittext(EditText spercent, EditText svill, EditText sgrow, EditText svillname, EditText sgrowname,View row) {
         this.spercent = spercent;
         this.svill = svill;
         this.sgrow = sgrow;
         this.svillname = svillname;
         this.sgrowname = sgrowname;
+        this.row=row;
+    }
+
+    public View getRow() {
+        return row;
+    }
+
+    public void setRow(View row) {
+        this.row = row;
     }
 
     public EditText getSpercent() {

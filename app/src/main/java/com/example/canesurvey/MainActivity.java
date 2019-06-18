@@ -7,6 +7,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.hardware.GeomagneticField;
+import android.icu.lang.UCharacter;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
@@ -16,6 +17,7 @@ import android.os.Bundle;
 import com.example.canesurvey.Comman.CommanData;
 import com.example.canesurvey.View.DaySummary;
 import com.example.canesurvey.util.CheckPermission;
+import com.example.canesurvey.util.ESC;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 
@@ -47,6 +49,9 @@ import android.view.MenuItem;
 import android.widget.Toast;
 
 import java.io.FileOutputStream;
+import java.nio.ByteBuffer;
+import java.nio.ByteOrder;
+import java.nio.IntBuffer;
 import java.util.ArrayList;
 import java.util.Base64;
 
@@ -54,6 +59,7 @@ public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, LocationListener {
 
 
+    //    private static final UCharacter.WordBreak ESC = ;
     private LocationManager mLocationManager;
     private static MainActivity mActivity;
     private ArrayList<GpsTestListener> mGpsTestListeners = new ArrayList<GpsTestListener>();
@@ -80,10 +86,15 @@ public class MainActivity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        String texttoprint="this is text to print";
 
-        palmtecandro.jnidevDataByteWrite(texttoprint.getBytes(),10);
-        palmtecandro.jnidevPrint();
+        String texttoprint = "this is text to print";
+
+        String[] column = new String[]{"Tax Invoice"};
+        Integer[] margin = new Integer[]{10};                        //no of charecters that is supported in one line of the printer
+        Integer[] align = new Integer[]{1};                            //alignment (0-left,1-center,2- right)
+
+        String printeData = ESC.setCHARASTYLE(0, 1, 1, 1, 0)
+                + ESC.printCOLUMN(column, margin, align) + ESC.RESETCHARASIZE + ESC.NEWLINE;
 
 
         /*FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
@@ -95,7 +106,7 @@ public class MainActivity extends AppCompatActivity
             }
         });*/
 
-        mActivity=this;
+        mActivity = this;
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -103,12 +114,11 @@ public class MainActivity extends AppCompatActivity
         toggle.syncState();
 
 
-
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-        BlankFragment fr=new BlankFragment();
-        fragment=fr;
+        BlankFragment fr = new BlankFragment();
+        fragment = fr;
         this.setTitle(fr.Tag);
         getSupportFragmentManager().beginTransaction().add(R.id.fholder, fragment).commit();
         Init();
@@ -127,11 +137,11 @@ public class MainActivity extends AppCompatActivity
 
     }
 
-    public class MyPrintDocumentAdapter extends PrintDocumentAdapter{
+    public class MyPrintDocumentAdapter extends PrintDocumentAdapter {
         Context _contect;
-        public MyPrintDocumentAdapter(Context context)
-        {
-            _contect=context;
+
+        public MyPrintDocumentAdapter(Context context) {
+            _contect = context;
         }
 
         @Override
@@ -193,7 +203,7 @@ public class MainActivity extends AppCompatActivity
             // Handle the camera action
 
             CapturePlot fr = new CapturePlot();
-            fragment=fr;
+            fragment = fr;
             this.setTitle(fr.TAG);
             getSupportFragmentManager().beginTransaction().replace(R.id.fholder, fragment).addToBackStack(fr.TAG).commit();
 
@@ -203,19 +213,19 @@ public class MainActivity extends AppCompatActivity
 
         } else if (id == R.id.nav_editplot) {
 
-        }else if(id==R.id.nav_daysummary){
+        } else if (id == R.id.nav_daysummary) {
             DaySummary fr = new DaySummary();
-            fragment=fr;
+            fragment = fr;
             this.setTitle(fr.TAG);
             getSupportFragmentManager().beginTransaction().replace(R.id.fholder, fragment).addToBackStack(fr.TAG).commit();
 
-        }else if (id == R.id.nav_dataimport) {
+        } else if (id == R.id.nav_dataimport) {
             ImportData fr = new ImportData();
-            fragment=fr;
+            fragment = fr;
             this.setTitle(fr.TAG);
             getSupportFragmentManager().beginTransaction().replace(R.id.fholder, fragment).addToBackStack(fr.TAG).commit();
 
-        } else if(id==R.id.nav_logout){
+        } else if (id == R.id.nav_logout) {
             //CommanData.conn.oprator.truncateTable();
 
             this.finish();
@@ -268,21 +278,34 @@ public class MainActivity extends AppCompatActivity
         if (mLocationManager == null) {
             return;
         }
-        currentListener=listener;
+        currentListener = listener;
         if (!mStarted) {
 
             CheckPermission.checkLocationPermission(this);
-            mStarted=true;
+            mStarted = true;
             mLocationManager
                     .requestLocationUpdates(mProvider.getName(), 500, 0, this);
         }
     }
 
+    String printstring = "this";
+
     @Override
     public void onLocationChanged(Location location) {
-        mLastLocation=location;
-        updateGeomagneticField();
-        currentListener.onLocationChanged(location);
+        try {
+            printstring = "new location found";
+            printstring += " lat:" + location.getLatitude() + " , Lang:" + location.getLongitude();
+
+            //palmtecandro.jnidevOpen(115200);
+            //palmtecandro.jnidevDataByteWrite(printstring.getBytes(),printstring.length());
+            //palmtecandro.jnidevPrint();
+
+            mLastLocation = location;
+            updateGeomagneticField();
+            currentListener.onLocationChanged(location);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     private void updateGeomagneticField() {
@@ -290,6 +313,7 @@ public class MainActivity extends AppCompatActivity
                 (float) mLastLocation.getLongitude(), (float) mLastLocation.getAltitude(),
                 mLastLocation.getTime());
     }
+
     @Override
     public void onStatusChanged(String s, int i, Bundle bundle) {
 
