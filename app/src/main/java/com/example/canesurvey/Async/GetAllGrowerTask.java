@@ -42,8 +42,8 @@ public class GetAllGrowerTask extends AsyncTask <Void,Void,Boolean>{
                             dataobj.getString("father"),
                             dataobj.getLong("uniqcode"),
                             dataobj.getLong("phone"),
-                            dataobj.getLong("aadhar")
-
+                            dataobj.getLong("aadhar"),
+                            dataobj.getInt("ghsrno")
                     );
                     CommanData.conn.grower.Add(rt);
                 }

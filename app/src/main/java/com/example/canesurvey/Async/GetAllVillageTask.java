@@ -38,8 +38,8 @@ public class GetAllVillageTask extends AsyncTask<Void,Void,Boolean> {
                     JSONObject dataobj = rootarr.getJSONObject(i);
                     VillageModel rt = new VillageModel(
                             dataobj.getInt("vcode"),
-                            dataobj.getString("vname")
-
+                            dataobj.getString("vname"),
+                            dataobj.getInt("ghno")
                     );
                     CommanData.conn.village.Add(rt);
                 }

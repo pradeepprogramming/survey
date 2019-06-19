@@ -49,6 +49,7 @@ public class TableGrower extends Table {
         cv.put(Unicode, rt.getUniqcode());
         cv.put(MobileNo, rt.getMobileno());
         cv.put(Aadharno, rt.getAadharno());
+        cv.put(LastGhsrno, rt.getLastghsrno());
 
         return Add(cv);
     }

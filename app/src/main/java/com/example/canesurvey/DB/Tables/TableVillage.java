@@ -36,6 +36,7 @@ public class TableVillage extends Table {
         ContentValues cv = new ContentValues();
         cv.put(VillageCode, rt.getCode());
         cv.put(VillageName, rt.getName());
+        cv.put(LastGhno, rt.getLastghno());
 
         return Add(cv);
     }

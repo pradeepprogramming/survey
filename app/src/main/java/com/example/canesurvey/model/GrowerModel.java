@@ -9,8 +9,9 @@ public class GrowerModel {
     private long Uniqcode;
     private long Mobileno;
     private long Aadharno;
+    private int Lastghsrno;
 
-    public GrowerModel(int VCode, int GCode, String GName, String father, long uniqcode, long mobileno, long aadharno) {
+    public GrowerModel(int VCode, int GCode, String GName, String father, long uniqcode, long mobileno, long aadharno,int lastghsrno) {
         this.VCode = VCode;
         this.GCode = GCode;
         this.GName = GName;
@@ -18,6 +19,15 @@ public class GrowerModel {
         Uniqcode = uniqcode;
         Mobileno = mobileno;
         Aadharno = aadharno;
+        Lastghsrno=lastghsrno;
+    }
+
+    public int getLastghsrno() {
+        return Lastghsrno;
+    }
+
+    public void setLastghsrno(int lastghsrno) {
+        Lastghsrno = lastghsrno;
     }
 
     public GrowerModel(int ID, int VCode, int GCode, String GName, String father, long uniqcode, long mobileno, long aadharno) {
