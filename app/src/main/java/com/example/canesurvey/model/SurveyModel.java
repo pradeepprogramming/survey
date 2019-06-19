@@ -19,14 +19,16 @@ public class SurveyModel {
     private long aadhar;
     private int sharepercent;
     private String surveydate;
-    private int Plotsrno;
+    private int plotno;
+    private int plotsrno;
 
 
     public SurveyModel() {
 
     }
 
-    public SurveyModel(int plotvillagecode,int growerid, double area, int variety, int irrigation, int plantationmethod, String plantationdate, long mobile, long aadhar, int sharepercent) {
+    public SurveyModel(int plotvillagecode,int growerid, double area, int variety, int irrigation, int plantationmethod,
+                       String plantationdate, long mobile, long aadhar, int sharepercent,int ghno,int ghsrno) {
         this.plotvillagecode=plotvillagecode;
         this.growerid = growerid;
         this.area = area;
@@ -38,7 +40,32 @@ public class SurveyModel {
         this.aadhar = aadhar;
         this.sharepercent = sharepercent;
         this.surveydate=new SimpleDateFormat("yyyy/MM/dd").format( Calendar.getInstance().getTime());
-        this.Plotsrno=0;
+        this.plotno=ghno;
+        this.plotsrno=ghsrno;
+    }
+
+    public String getSurveydate() {
+        return surveydate;
+    }
+
+    public void setSurveydate(String surveydate) {
+        this.surveydate = surveydate;
+    }
+
+    public int getPlotno() {
+        return plotno;
+    }
+
+    public void setPlotno(int plotno) {
+        this.plotno = plotno;
+    }
+
+    public int getPlotsrno() {
+        return plotsrno;
+    }
+
+    public void setPlotsrno(int plotsrno) {
+        this.plotsrno = plotsrno;
     }
 
     public int getPlotvillagecode() {

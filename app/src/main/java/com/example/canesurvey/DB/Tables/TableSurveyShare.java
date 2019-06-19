@@ -1,6 +1,10 @@
 package com.example.canesurvey.DB.Tables;
 
+import android.content.ContentValues;
 import android.database.sqlite.SQLiteDatabase;
+
+import com.example.canesurvey.model.PlotLcationModel;
+import com.example.canesurvey.model.ShareDetails;
 
 public class TableSurveyShare extends Table {
     public TableSurveyShare(SQLiteDatabase db)
@@ -25,4 +29,14 @@ public class TableSurveyShare extends Table {
                 .append(");").toString();
         return query;
     }
+
+    public long Add(long surveyid,int growerid,int percent){
+        ContentValues cv = new ContentValues();
+        cv.put(SurveyID, surveyid);
+        cv.put(GrowerID, growerid);
+        cv.put(Percent, percent);
+
+        return Add(cv);
+    }
+
 }

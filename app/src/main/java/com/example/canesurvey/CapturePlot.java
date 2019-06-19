@@ -56,7 +56,7 @@ public class CapturePlot extends Fragment implements GpsTestListener, View.OnCli
     private OnFragmentInteractionListener mListener;
     private LinearLayout panel_location;
     private TextView txtlat1, txtlat2, txtlat3, txtlat4, txtlon1, txtlon2, txtlon3, txtlon4, txtmtr1, txtmtr2, txtmtr3, txtmtr4;
-    private TextView txtarea, txtcurrentlatlon, txtaccu;
+    private TextView txtarea, txtcurrentlatlon, txtaccu, txtTotalpercent;
     private EditText mPlotVillCode, mPlotVillName, mVarietycode, mVarietyname, mCanetypeCode, mCanetypeName,
             mPlantationDate, mGVillCode, mGVillName, mFathername, mGCode, mGName, mMobileno, mSharePercent, moSharepercent, moSVill, moSgrow, moSvillname, moSGrowname;
     private Spinner mPlantation, mIrrigation;
@@ -167,6 +167,8 @@ public class CapturePlot extends Fragment implements GpsTestListener, View.OnCli
         txtmtr3 = v.findViewById(R.id.txt_mtr3);
         txtmtr4 = v.findViewById(R.id.txt_mtr4);
         txtarea = v.findViewById(R.id.txt_area);
+        txtTotalpercent = v.findViewById(R.id.ctotalpercent);
+        txtTotalpercent.setText("0 %");
         txtcurrentlatlon = v.findViewById(R.id.txt_currentlatlon);
         txtaccu = v.findViewById(R.id.txt_accu);
         btncapturelocation = v.findViewById(R.id.btn_capturelocation);
@@ -432,9 +434,10 @@ public class CapturePlot extends Fragment implements GpsTestListener, View.OnCli
                     , CommanData.conn.irrigation.getID(mIrrigation.getSelectedItem().toString())
                     , CommanData.conn.plantationMethod.getID(mPlantation.getSelectedItem().toString())
                     , mPlantationDate.getText().toString()
+                    , Long.valueOf(mMobileno.getText().toString())
                     , 0
-                    , 0
-                    , Integer.valueOf(mSharePercent.getText().toString())
+                    , Integer.valueOf(txtTotalpercent.getText().toString()),
+                    0, 0
             );
 
             long lastid = CommanData.conn.survey.Add(survey);
@@ -445,6 +448,13 @@ public class CapturePlot extends Fragment implements GpsTestListener, View.OnCli
                 CommanData.conn.plotlocation.Add(plotLcationModel);
                 Log.d(TAG, "SaveSurvey: " + plotLcationModel.getCorner());
 
+            }
+            int growerid = 0;
+            for (ShareDetails shared :
+                    sharedetailslist) {
+                growerid = CommanData.conn.grower.getGrowerid(shared.getVill(), shared.getGrow());
+                if (growerid > 0)
+                    CommanData.conn.surveyShare.Add(lastid, growerid, shared.getPercent());
             }
             cleanControls();
             Toast.makeText(this.getContext(), "Survey Saved", Toast.LENGTH_LONG).show();
@@ -651,6 +661,12 @@ public class CapturePlot extends Fragment implements GpsTestListener, View.OnCli
                 } else
                     moSVill.setError("First Fill Village Code");
             } else if (currenttextchangecontrol == mSharePercent) {
+                int percent = Integer.valueOf(mSharePercent.getText().toString());
+                for (ShareDetails per :
+                        sharedetailslist) {
+                    percent += per.getPercent();
+                }
+                txtTotalpercent.setText("" + percent + " %");
                 if (Integer.valueOf(editable.toString()) == 100)
                     btnAddShare.setEnabled(false);
                 else if (Integer.valueOf(editable.toString()) < 100) {
@@ -667,6 +683,7 @@ public class CapturePlot extends Fragment implements GpsTestListener, View.OnCli
                     percent1 += per.getPercent();
                 }
                 int percent = percent1 + Integer.valueOf(editable.toString());
+                txtTotalpercent.setText("" + percent + " %");
                 if (percent <= 100) {
                     btnAddShare.setEnabled(true);
                 } else if (percent > 100) {
