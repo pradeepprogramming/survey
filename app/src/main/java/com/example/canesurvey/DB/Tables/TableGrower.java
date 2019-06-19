@@ -14,15 +14,15 @@ public class TableGrower extends Table {
         setTableName("Grower");
     }
 
-     String ID = "ID";
-     String GrowerCode = "GrowerCode";
-     String VillageCode = "VillageCode";
-     String GrowerName = "GrowerName";
-     String FatherName = "FatherName";
+    String ID = "ID";
+    String GrowerCode = "GrowerCode";
+    String VillageCode = "VillageCode";
+    String GrowerName = "GrowerName";
+    String FatherName = "FatherName";
     private String Unicode = "Unicode";
     private String MobileNo = "MobileNo";
     private String Aadharno = "Aadharno";
-    private String LastGhsrno="LastGhsrno";
+    private String LastGhsrno = "LastGhsrno";
 
     public String CreateTable() {
         String query = new StringBuilder("create table " + getTableName() + "  (" + ID + " INTEGER not null  PRIMARY KEY AUTOINCREMENT ")
@@ -55,10 +55,10 @@ public class TableGrower extends Table {
     }
 
 
-    public String getGrowerName(int villcode,int growercode) {
+    public String getGrowerName(int villcode, int growercode) {
         try {
             String query = "SELECT " + GrowerName +
-                    " FROM " + getTableName() + " where " + GrowerCode + "=" + growercode + " and "+VillageCode+"="+villcode+" ;";
+                    " FROM " + getTableName() + " where " + GrowerCode + "=" + growercode + " and " + VillageCode + "=" + villcode + " ;";
             Cursor cursor = db.rawQuery(query, null);
             cursor.moveToFirst();
             String name = "";
@@ -71,6 +71,7 @@ public class TableGrower extends Table {
         }
         return null;
     }
+
     public String getGrowerCode(int id) {
         try {
             String query = "SELECT " + GrowerName +
@@ -87,10 +88,11 @@ public class TableGrower extends Table {
         }
         return null;
     }
-    public String getFatherName(int villcode,int growercode) {
+
+    public String getFatherName(int villcode, int growercode) {
         try {
             String query = "SELECT " + FatherName +
-                    " FROM " + getTableName() + " where " + GrowerCode + "=" + growercode + " and "+VillageCode+"="+villcode+" ;";
+                    " FROM " + getTableName() + " where " + GrowerCode + "=" + growercode + " and " + VillageCode + "=" + villcode + " ;";
             Cursor cursor = db.rawQuery(query, null);
             cursor.moveToFirst();
             String name = "";
@@ -103,6 +105,7 @@ public class TableGrower extends Table {
         }
         return null;
     }
+
     public String getFatherName(int id) {
         try {
             String query = "SELECT " + FatherName +
@@ -119,6 +122,7 @@ public class TableGrower extends Table {
         }
         return null;
     }
+
     public String getGrowerName(int id) {
         try {
             String query = "SELECT " + GrowerName +
@@ -139,7 +143,7 @@ public class TableGrower extends Table {
     public int getGrowerid(int villcode, int growercode) {
         try {
             String query = "SELECT " + ID +
-                    " FROM " + getTableName() + " where " + GrowerCode + "=" + growercode + " and "+VillageCode+"="+villcode+" ;";
+                    " FROM " + getTableName() + " where " + GrowerCode + "=" + growercode + " and " + VillageCode + "=" + villcode + " ;";
             Cursor cursor = db.rawQuery(query, null);
             cursor.moveToFirst();
             int name = 0;
@@ -151,5 +155,15 @@ public class TableGrower extends Table {
             e.printStackTrace();
         }
         return 0;
+    }
+
+    public int getgrowlastghsrno(int growerid) {
+        String query = "SELECT "+LastGhsrno+" FROM " + getTableName() + " where " + ID + "=" + growerid + " ;";
+        Cursor cursor = db.rawQuery(query, null);
+        //cursor.moveToFirst();
+        int name = 0;
+        name = cursor.getInt(0);
+        cursor.close();
+        return name;
     }
 }
