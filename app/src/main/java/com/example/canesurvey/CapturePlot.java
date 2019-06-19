@@ -405,7 +405,7 @@ public class CapturePlot extends Fragment implements GpsTestListener, View.OnCli
 
         tableShare.addView(shareview);
         sharelist.add(se);
-        ShareDetails sd=new ShareDetails(Integer.valueOf(moSharepercent.getText().toString()),Integer.getInteger(moSVill.getText().toString()),Integer.getInteger(moSgrow.getText().toString()));
+        ShareDetails sd = new ShareDetails(Integer.valueOf(moSharepercent.getText().toString()), Integer.valueOf(moSVill.getText().toString()), Integer.valueOf(moSgrow.getText().toString()));
         sharedetailslist.add(sd);
 
         // clean data
@@ -636,12 +636,20 @@ public class CapturePlot extends Fragment implements GpsTestListener, View.OnCli
                 }
             } else if (currenttextchangecontrol == mGVillCode) {
                 mGVillName.setText(CommanData.conn.village.getVillageName(Integer.valueOf(editable.toString())));
+            } else if (currenttextchangecontrol == moSVill) {
+                moSvillname.setText(CommanData.conn.village.getVillageName(Integer.valueOf(editable.toString())));
             } else if (currenttextchangecontrol == mGCode) {
                 if (mGVillCode.getText().length() > 0) {
                     mGName.setText(CommanData.conn.grower.getGrowerName(Integer.valueOf(mGVillCode.getText().toString()), Integer.valueOf(editable.toString())));
                     mFathername.setText(CommanData.conn.grower.getFatherName(Integer.valueOf(mGVillCode.getText().toString()), Integer.valueOf(editable.toString())));
                 } else
                     mGCode.setError("First Fill Village Code");
+            } else if (currenttextchangecontrol == moSgrow) {
+                if (moSVill.getText().length() > 0) {
+                    moSGrowname.setText(CommanData.conn.grower.getGrowerName(Integer.valueOf(moSVill.getText().toString()), Integer.valueOf(editable.toString())));
+
+                } else
+                    moSVill.setError("First Fill Village Code");
             } else if (currenttextchangecontrol == mSharePercent) {
                 if (Integer.valueOf(editable.toString()) == 100)
                     btnAddShare.setEnabled(false);
@@ -651,6 +659,26 @@ public class CapturePlot extends Fragment implements GpsTestListener, View.OnCli
                     mSharePercent.setError("Share Percent Can not grater then 100");
                     mSharePercent.setText("100");
                     btnAddShare.setEnabled(false);
+                }
+            } else if (currenttextchangecontrol == moSharepercent) {
+                int percent1 = Integer.valueOf(mSharePercent.getText().toString());
+                for (ShareDetails per :
+                        sharedetailslist) {
+                    percent1 += per.getPercent();
+                }
+                int percent = percent1 + Integer.valueOf(editable.toString());
+                if (percent <= 100) {
+                    btnAddShare.setEnabled(true);
+                } else if (percent > 100) {
+                    moSharepercent.setError("Overall Share Percent Can not grater then 100");
+                    if (100 - percent1 > 0) {
+
+                        moSharepercent.setText((100 - percent1) + "");
+                        btnAddShare.setEnabled(true);
+                    } else {
+                        moSharepercent.setText("0");
+                        btnAddShare.setEnabled(false);
+                    }
                 }
             }
 

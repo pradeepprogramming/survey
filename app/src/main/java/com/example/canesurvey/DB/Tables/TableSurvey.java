@@ -30,6 +30,8 @@ public class TableSurvey extends Table {
     private String MobileNo = "MobileNo";
     private String AadharNo = "AadharNo";
     private String TotalSharePercent = "TotalSharePercent";
+    private String SurveyDate="SurveyDate";
+    private String PlotSrno="PlotSrno";
 
     public String CreateTable() {
         String query = new StringBuilder("create table " + getTableName() + "  (" + ID + " INTEGER not null  PRIMARY KEY AUTOINCREMENT ")
@@ -39,11 +41,12 @@ public class TableSurvey extends Table {
                 .append("," + Variety + " INTEGER NOT NULL")
                 .append("," + Irigation + " INTEGER NOT NULL")
                 .append("," + PlantationMethod + " INTEGER NOT NULL")
-                .append("," + PlantationDate + " NUMERIC NOT NULL")
+                .append("," + PlantationDate + " text NOT NULL")
                 .append("," + MobileNo + " NUMERIC NOT NULL")
                 .append("," + AadharNo + " NUMERIC NOT NULL")
                 .append("," + TotalSharePercent + " INTEGER NOT NULL")
-
+                .append("," + SurveyDate + " text NOT NULL")
+                .append("," + PlotSrno + " INTEGER NOT NULL")
                 .append(");").toString();
         return query;
     }

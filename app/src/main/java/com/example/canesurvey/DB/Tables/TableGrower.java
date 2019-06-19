@@ -22,6 +22,7 @@ public class TableGrower extends Table {
     private String Unicode = "Unicode";
     private String MobileNo = "MobileNo";
     private String Aadharno = "Aadharno";
+    private String LastGhsrno="LastGhsrno";
 
     public String CreateTable() {
         String query = new StringBuilder("create table " + getTableName() + "  (" + ID + " INTEGER not null  PRIMARY KEY AUTOINCREMENT ")
@@ -32,6 +33,7 @@ public class TableGrower extends Table {
                 .append("," + Unicode + " NUMERIC NOT NULL")
                 .append("," + MobileNo + " NUMERIC NOT NULL")
                 .append("," + Aadharno + " NUMERIC NOT NULL")
+                .append("," + LastGhsrno + " int NOT NULL")
                 .append(");").toString();
         return query;
     }

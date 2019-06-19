@@ -19,11 +19,13 @@ public class TableVillage extends Table {
     private String ID="ID";
     private String VillageCode="VillageCode";
     private String VillageName="VillageName";
+    private String LastGhno="LastGhno";
 
     public String CreateTable() {
         String query=new StringBuilder("create table "+getTableName()+"  ("+ID+" INTEGER not null  PRIMARY KEY AUTOINCREMENT ")
                 .append(","+VillageCode+" INTEGER not null")
                 .append(","+VillageName+" NUMERIC NOT NULL")
+                .append(","+LastGhno+" int NOT NULL")
                 .append(");").toString();
         return query;
     }

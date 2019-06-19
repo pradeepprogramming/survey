@@ -1,5 +1,9 @@
 package com.example.canesurvey.model;
 
+
+
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 
 public class SurveyModel {
@@ -14,6 +18,8 @@ public class SurveyModel {
     private long mobile;
     private long aadhar;
     private int sharepercent;
+    private String surveydate;
+    private int Plotsrno;
 
 
     public SurveyModel() {
@@ -31,6 +37,8 @@ public class SurveyModel {
         this.mobile = mobile;
         this.aadhar = aadhar;
         this.sharepercent = sharepercent;
+        this.surveydate=new SimpleDateFormat("yyyy/MM/dd").format( Calendar.getInstance().getTime());
+        this.Plotsrno=0;
     }
 
     public int getPlotvillagecode() {
