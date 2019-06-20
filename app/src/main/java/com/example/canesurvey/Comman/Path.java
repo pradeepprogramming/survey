@@ -1,7 +1,7 @@
 package com.example.canesurvey.Comman;
 
 public class Path {
-    public static String Baseurl="http://cmsapi.nessms.com/api/";
+    public static String Baseurl="http://cmsapi.nessms.com/api/1/";
     public static String opratorLogin=Baseurl+"Opratorlogin";
     public static String opratorchekimei=Baseurl+"Opratorlogin/imei/";
     public static String getopratorgrower=Baseurl+"grower/";

@@ -1,12 +1,27 @@
 package com.example.canesurvey.model;
 
 public class ShareDetails {
-    int percent,vill,grow;
+    int surveyid,percent,vill,grow;
 
     public ShareDetails(int percent, int vill, int grow) {
         this.percent = percent;
         this.vill = vill;
         this.grow = grow;
+    }
+
+    public ShareDetails(int surveyid, int percent, int vill, int grow) {
+        this.surveyid = surveyid;
+        this.percent = percent;
+        this.vill = vill;
+        this.grow = grow;
+    }
+
+    public int getSurveyid() {
+        return surveyid;
+    }
+
+    public void setSurveyid(int surveyid) {
+        this.surveyid = surveyid;
     }
 
     public int getPercent() {

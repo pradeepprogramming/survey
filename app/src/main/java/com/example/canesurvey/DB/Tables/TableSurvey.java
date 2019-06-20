@@ -160,6 +160,7 @@ public class TableSurvey extends Table {
                 cm.setFathername(CommanData.conn.grower.getFatherName(growerid));
                 cm.setVillagename(CommanData.conn.village.getVillageName(villcode));
                 cm.setPlotlocations(CommanData.conn.plotlocation.getAllPlotLocation(id));
+                cm.setShareDetails(CommanData.conn.surveyShare.getAllsharedetails(id));
                 completesurveys.add(cm);
             }
             return completesurveys;

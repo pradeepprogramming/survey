@@ -15,7 +15,16 @@ public class CompleteSurveyModel extends SurveyModel {
     private String growername;
     private String villagename;
     private String fathername;
+    private List<ShareDetails> shareDetails;
 
+
+    public List<ShareDetails> getShareDetails() {
+        return shareDetails;
+    }
+
+    public void setShareDetails(List<ShareDetails> shareDetails) {
+        this.shareDetails = shareDetails;
+    }
 
     public String getPlotvillname() {
         return plotvillname;
@@ -98,6 +107,16 @@ public class CompleteSurveyModel extends SurveyModel {
         }
 
         jobj.put("plotlocations",ar);
+        ar=new JSONArray();
+        for (ShareDetails share:shareDetails
+        ) {
+            JSONObject jo=new JSONObject().put("percent",share.getPercent())
+                    .put("vill",share.getVill())
+                    .put("grow",share.getGrow())
+                    ;
+            ar.put(jo);
+        }
+        jobj.put("sharedetails",ar);
         return jobj;
     }
 
