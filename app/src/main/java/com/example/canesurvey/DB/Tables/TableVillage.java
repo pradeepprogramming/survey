@@ -43,7 +43,7 @@ public class TableVillage extends Table {
     public int getvilllastghno(int plotvillcode) {
         String query = "SELECT " + LastGhno + " FROM " + getTableName() + " where " + VillageCode + "=" + plotvillcode + " ;";
         Cursor cursor = db.rawQuery(query, null);
-        //cursor.moveToFirst();
+        cursor.moveToFirst();
         int name = 0;
         name = cursor.getInt(0);
         cursor.close();

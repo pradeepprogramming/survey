@@ -436,7 +436,7 @@ public class CapturePlot extends Fragment implements GpsTestListener, View.OnCli
                     , mPlantationDate.getText().toString()
                     , Long.valueOf(mMobileno.getText().toString())
                     , 0
-                    , Integer.valueOf(txtTotalpercent.getText().toString()),
+                    , Integer.valueOf(txtTotalpercent.getText().toString().replace('%',' ').trim()),
                     0, 0
             );
 

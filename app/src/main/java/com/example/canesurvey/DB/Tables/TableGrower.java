@@ -160,7 +160,7 @@ public class TableGrower extends Table {
     public int getgrowlastghsrno(int growerid) {
         String query = "SELECT "+LastGhsrno+" FROM " + getTableName() + " where " + ID + "=" + growerid + " ;";
         Cursor cursor = db.rawQuery(query, null);
-        //cursor.moveToFirst();
+        cursor.moveToFirst();
         int name = 0;
         name = cursor.getInt(0);
         cursor.close();
