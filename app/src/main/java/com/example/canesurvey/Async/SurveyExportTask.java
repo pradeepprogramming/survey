@@ -27,7 +27,7 @@ public class SurveyExportTask extends AsyncTask<Void,Void,Boolean> {
 
     @Override
     protected Boolean doInBackground(Void... voids) {
-        String result=new UrlCalling().getResult(Path.getopratorgrower+ CommanData.oprator.getCode()+"?surveydata="+jsontoexport,UrlCalling.Method.POST);
+        String result=new UrlCalling().getResult(Path.exportsurvey+ CommanData.oprator.getCode()+"?surveydata="+jsontoexport,UrlCalling.Method.POST);
         if(result.length()>5)
         {
             try {

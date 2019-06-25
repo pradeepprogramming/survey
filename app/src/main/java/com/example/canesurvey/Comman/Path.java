@@ -9,4 +9,5 @@ public class Path {
     public static String getvarieties=Baseurl+"variety/";
     public static String getirrigations=Baseurl+"irrigation/";
     public static String getplantationmethod=Baseurl+"plantation/";
+    public static String exportsurvey=Baseurl+"SurveyExport/";
 }

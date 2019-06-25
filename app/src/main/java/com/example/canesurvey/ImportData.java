@@ -19,6 +19,7 @@ import com.example.canesurvey.Async.GetAllIrrigationTask;
 import com.example.canesurvey.Async.GetAllPlantationTask;
 import com.example.canesurvey.Async.GetAllVillageTask;
 import com.example.canesurvey.Async.GetAllvarietyTask;
+import com.example.canesurvey.Async.SurveyExportTask;
 import com.example.canesurvey.Comman.CommanData;
 import com.example.canesurvey.Repository.ITaskComplete;
 import com.example.canesurvey.model.CompleteSurveyModel;
@@ -119,7 +120,10 @@ public class ImportData extends Fragment implements View.OnClickListener, ITaskC
 
             CommanData.CloseWaitDialog();
             String surveystring=surveysjson.toString();
+            SurveyExportTask setask=new SurveyExportTask(this,surveystring);
+            setask.execute();
             AlertDialog dialog=new AlertDialog.Builder(this.getContext()).setTitle("uploadJson").setMessage(surveystring).show();
+
         }
     }
 
